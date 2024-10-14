@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kojina_project/screen/auth-screen/login_screen.dart';
+import 'package:kojina_project/screen/auth-screen/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(),
-        body: Column(
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: LoginScreen(),
     );
   }
 }
- 
- 
