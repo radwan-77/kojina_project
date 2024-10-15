@@ -54,6 +54,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 borderSide: BorderSide(color: mainColor), // Change this color
                 borderRadius: BorderRadius.circular(5),
               ),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16),
             ),
           ),
           if (widget.forgetPassword)

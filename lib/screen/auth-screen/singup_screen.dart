@@ -28,20 +28,20 @@ class _SingUpScreenState extends State<SingUpScreen> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.only(top: 8),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Image.asset(
-                "assets/kojina_light.png",
-                width: Getsize(context).width * 0.6,
-              ),
-              // const SizedBox(
-              //   height: 8,
-              // ),
-              Form(
-                key: formkey,
-                child: SingleChildScrollView(
+          padding: const EdgeInsets.only(top: 48),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.asset(
+                  "assets/kojina_light.png",
+                  width: Getsize(context).width * 0.4,
+                ),
+                // const SizedBox(
+                //   height: 8,
+                // ),
+                Form(
+                  key: formkey,
                   child: Column(
                     children: [
                       const CustomLabel(text: "الاسم"),
@@ -105,14 +105,17 @@ class _SingUpScreenState extends State<SingUpScreen> {
                     ],
                   ),
                 ),
-              ),
-              MainButton(text: "أنشاء حساب ", onPressed: () {}, nextpage: LoginScreen()),
-              forgetPassword(
-                  onPressed: () {},
-                  text1: "لديك حساب",
-                  text2: "تسجيل الدخول",
-                  nextpage: LoginScreen())
-            ],
+                MainButton(
+                    text: "أنشاء حساب ",
+                    onPressed: () {},
+                    nextpage: LoginScreen()),
+                forgetPassword(
+                    onPressed: () {},
+                    text1: "لديك حساب",
+                    text2: "تسجيل الدخول",
+                    nextpage: LoginScreen())
+              ],
+            ),
           ),
         ),
       ),

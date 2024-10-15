@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:kojina_project/generated/l10n.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/screen/auth-screen/singup_screen.dart';
 import 'package:kojina_project/screen/main-screen/home_screen.dart';
@@ -27,22 +28,22 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(top: 32),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Image.asset(
-                "assets/kojina_light.png",
-                width: Getsize(context).width * 0.6,
-              ),
-              // const SizedBox(
-              //   height: 8,
-              // ),
-              Form(
-                key: formkey,
-                child: SingleChildScrollView(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.asset(
+                  "assets/kojina_light.png",
+                  width: Getsize(context).width * 0.4,
+                ),
+                // const SizedBox(
+                //   height: 8,
+                // ),
+                Form(
+                  key: formkey,
                   child: Column(
                     children: [
-                      const CustomLabel(text: "رقم الهاتف"),
+                       CustomLabel(text: S.of(context).phone),
                       CustomTextField(
                         controller: phoneController,
                         validator: (validator) {
@@ -79,17 +80,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
-              ),
-              MainButton(text: "تسجيل الدخول", onPressed: () {}, nextpage: HomeScreen()),
-              const SizedBox(
-                height: 8,
-              ),
-              forgetPassword(
-                  onPressed: () {},
-                  text1: "ليس لديك حساب",
-                  text2: "سجل الان",
-                  nextpage: SingUpScreen()),
-            ],
+                MainButton(
+                    text: "تسجيل الدخول",
+                    onPressed: () {},
+                    nextpage: HomeScreen()),
+                const SizedBox(
+                  height: 8,
+                ),
+                forgetPassword(
+                    onPressed: () {},
+                    text1: "ليس لديك حساب",
+                    text2: "سجل الان",
+                    nextpage: SingUpScreen()),
+              ],
+            ),
           ),
         ),
       ),

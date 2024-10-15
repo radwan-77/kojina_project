@@ -14,7 +14,6 @@ class CustomLabel extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 16, top: 8, bottom: 8),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(
             text,

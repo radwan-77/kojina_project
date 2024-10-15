@@ -7,12 +7,12 @@ class MainButton extends StatefulWidget {
   // final bool inProgress = false;
   final Color btnColor = mainColor;
   final Color txtColor = onPrimaryLight;
-  final Widget nextpage;
+  final Widget? nextpage;
   const MainButton({
     super.key,
     required this.text,
     required this.onPressed,
-    required this.nextpage,
+     this.nextpage,
   });
 
   @override
@@ -35,7 +35,7 @@ class _MainButtonState extends State<MainButton> {
         onPressed: () {
           widget.onPressed();
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => widget.nextpage));
+              MaterialPageRoute(builder: (context) => widget.nextpage!));
         },
         child: Text(
           widget.text,
