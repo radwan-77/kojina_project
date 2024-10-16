@@ -12,7 +12,7 @@ class MainButton extends StatefulWidget {
     super.key,
     required this.text,
     required this.onPressed,
-     this.nextpage,
+    this.nextpage,
   });
 
   @override
@@ -23,8 +23,8 @@ class _MainButtonState extends State<MainButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: Getsize(context).width * 0.9,
-      height: Getsize(context).height * 0.06,
+      width: getsize(context).width * 0.9,
+      height: getsize(context).height * 0.06,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: widget.btnColor,

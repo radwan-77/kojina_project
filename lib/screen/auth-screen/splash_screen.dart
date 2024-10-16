@@ -13,9 +13,9 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, CupertinoPageRoute(builder: (context) => LoginScreen()));
+          context, CupertinoPageRoute(builder: (context) => const LoginScreen()));
     });
     super.initState();
   }

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:kojina_project/generated/l10n.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/screen/auth-screen/singup_screen.dart';
@@ -34,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Image.asset(
                   "assets/kojina_light.png",
-                  width: Getsize(context).width * 0.4,
+                  width: getsize(context).width * 0.4,
                 ),
                 // const SizedBox(
                 //   height: 8,
@@ -43,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   key: formkey,
                   child: Column(
                     children: [
-                       CustomLabel(text: S.of(context).phone),
+                      CustomLabel(text: S.of(context).phone),
                       CustomTextField(
                         controller: phoneController,
                         validator: (validator) {
@@ -83,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 MainButton(
                     text: "تسجيل الدخول",
                     onPressed: () {},
-                    nextpage: HomeScreen()),
+                    nextpage: const HomeScreen()),
                 const SizedBox(
                   height: 8,
                 ),
@@ -91,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {},
                     text1: "ليس لديك حساب",
                     text2: "سجل الان",
-                    nextpage: SingUpScreen()),
+                    nextpage: const SingUpScreen()),
               ],
             ),
           ),

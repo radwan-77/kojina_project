@@ -34,7 +34,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Getsize(context).width * 0.9,
+      width: getsize(context).width * 0.9,
       child: Column(
         children: [
           TextFormField(

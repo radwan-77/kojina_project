@@ -35,7 +35,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
               children: [
                 Image.asset(
                   "assets/kojina_light.png",
-                  width: Getsize(context).width * 0.4,
+                  width: getsize(context).width * 0.4,
                 ),
                 // const SizedBox(
                 //   height: 8,
@@ -108,12 +108,12 @@ class _SingUpScreenState extends State<SingUpScreen> {
                 MainButton(
                     text: "أنشاء حساب ",
                     onPressed: () {},
-                    nextpage: LoginScreen()),
+                    nextpage: const LoginScreen()),
                 forgetPassword(
                     onPressed: () {},
                     text1: "لديك حساب",
                     text2: "تسجيل الدخول",
-                    nextpage: LoginScreen())
+                    nextpage: const LoginScreen())
               ],
             ),
           ),

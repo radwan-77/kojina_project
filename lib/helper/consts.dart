@@ -10,7 +10,7 @@ const Color tertiaryLight = Color(0xFFc0c0c0);
 const Color errorColor = Color(0xFFE70013);
 // <---------------------functions-------------------->
 
-Getsize(context){
+getsize(context){
  return MediaQuery.of(context).size;
   
 }
