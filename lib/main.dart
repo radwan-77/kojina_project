@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kojina_project/generated/l10n.dart';
 import 'package:kojina_project/screen/auth-screen/splash_screen.dart';
+import 'package:kojina_project/screen/cart-screen/empty_cart_screen.dart';
 import 'package:kojina_project/screen/main-screen/home_screen.dart';
+import 'package:kojina_project/screen/notification_screen/notification_screen.dart';
 import 'package:kojina_project/widget/card/kitchen_card.dart';
 
 void main() {
