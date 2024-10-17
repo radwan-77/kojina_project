@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 
-class MainButton extends StatelessWidget {
+class AddToCartButton extends StatelessWidget {
   final String text;
   final Function onPressed;
   // final bool inProgress = false;
   final Color btnColor = mainColor;
   final Color txtColor = onPrimaryLight;
   final Widget? nextpage;
-  const MainButton({
+  const AddToCartButton({
     super.key,
     required this.text,
     required this.onPressed,
@@ -20,7 +20,7 @@ class MainButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: getsize(context).width * 0.9,
+      width: getsize(context).width * 0.5,
       height: getsize(context).height * 0.06,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -30,22 +30,29 @@ class MainButton extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          if(nextpage !=null){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => nextpage!));}
-            else{
-              if(kDebugMode){
-                print("not pressed");
-              }
+          if (nextpage != null) {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => nextpage!));
+          } else {
+            if (kDebugMode) {
+              print("not pressed");
             }
+          }
           ;
         },
-        child: Text(
-          text,
-          style: TextStyle(
-            color: onPrimaryLight,
-            fontSize: 18,
-            fontFamily: "cairo",
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              text,
+              style: TextStyle(
+                color: onPrimaryLight,
+                fontSize: 18,
+                fontFamily: "cairo",
+              ),
+            ),
+            Icon(Icons.shopping_cart),
+          ],
         ),
       ),
     );

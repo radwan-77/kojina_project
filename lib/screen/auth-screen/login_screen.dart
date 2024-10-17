@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kojina_project/generated/l10n.dart';
 import 'package:kojina_project/helper/consts.dart';
+import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/screen/auth-screen/singup_screen.dart';
 import 'package:kojina_project/screen/main-screen/home_screen.dart';
 import 'package:kojina_project/widget/clickables/forgetpasswordbutton.dart';

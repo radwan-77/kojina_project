@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/consts.dart';
+import 'package:kojina_project/helper/function_helper.dart';
 
 class CustomeSearchBar extends StatelessWidget {
   final TextEditingController controller;
-  final String hint;
+  final String hint; 
   final String? label;
   final Widget? prefix;
   final Widget? suffix;

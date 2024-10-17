@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/consts.dart';
+import 'package:kojina_project/helper/function_helper.dart';
 
 class CustomCard extends StatelessWidget {
   final String mealName;
@@ -7,13 +8,18 @@ class CustomCard extends StatelessWidget {
   final String imageUrl;
   final String kitchenName;
   final String rating;
+  final int? discount;
+  final String? description;
 
-  CustomCard({
+  const CustomCard({
+    super.key,
     required this.imageUrl,
     required this.kitchenName,
     required this.rating,
     required this.price,
     required this.mealName,
+    this.discount,
+    this.description,
   });
 
   @override
@@ -72,29 +78,32 @@ class CustomCard extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    left: 10,
-                    top: 10,
-                    child: Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "تخفيض",
-                            style: TextStyle(color: Colors.white, fontSize: 10),
-                          ),
-                          Text(
-                            "50%",
-                            style: TextStyle(color: Colors.white, fontSize: 14),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+                      left: 10,
+                      top: 10,
+                      child: discount != null
+                          ? Container(
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    "تخفيض",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 10),
+                                  ),
+                                  Text(
+                                    "$discount%",
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 14),
+                                  )
+                                ],
+                              ),
+                            )
+                          : const SizedBox()),
                 ],
               ),
             ),
