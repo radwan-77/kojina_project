@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
+import 'package:kojina_project/screen/main-screen/meal_Screen.dart';
 
-class CustomCard extends StatelessWidget {
+class CustomCard extends StatefulWidget {
   final String mealName;
   final double price;
   final String imageUrl;
@@ -10,6 +13,8 @@ class CustomCard extends StatelessWidget {
   final String rating;
   final int? discount;
   final String? description;
+  final Widget? mealpage;
+  final Widget? kitchenpage;
 
   const CustomCard({
     super.key,
@@ -20,8 +25,16 @@ class CustomCard extends StatelessWidget {
     required this.mealName,
     this.discount,
     this.description,
+    this.mealpage,
+    this.kitchenpage,
   });
 
+  @override
+  State<CustomCard> createState() => _CustomCardState();
+}
+
+class _CustomCardState extends State<CustomCard> {
+  bool isSlected = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -56,31 +69,49 @@ class CustomCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               child: Stack(
                 children: [
-                  Image.asset(
-                    imageUrl,
-                    height: getsize(context).height * 0.2,
-                    width: getsize(context).width * 0.7,
-                    fit: BoxFit.cover,
+                  GestureDetector(
+                    onTap: () {
+                      if (widget.mealpage != null) {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => widget.mealpage!));
+                      }
+                    },
+                    child: Image.asset(
+                      widget.imageUrl,
+                      height: getsize(context).height * 0.2,
+                      width: getsize(context).width * 0.7,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  Positioned(
-                    right: 10,
-                    top: 10,
-                    child: Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: const Icon(
-                        Icons.favorite,
-                        color: Colors.red,
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isSlected = !isSlected;
+                      });
+                    },
+                    child: Positioned(
+                      right: 10,
+                      top: 10,
+                      child: Container(
+                        padding: const EdgeInsets.all(5),
+                        child: isSlected
+                            ? const Icon(
+                                Icons.favorite,
+                                color: mainColor,
+                                size: 50,
+                              )
+                            : const Icon(
+                                Icons.favorite_border,
+                                color: mainColor,
+                                size: 50,
+                              ),
                       ),
                     ),
                   ),
                   Positioned(
                       left: 10,
                       top: 10,
-                      child: discount != null
+                      child: widget.discount != null
                           ? Container(
                               padding: const EdgeInsets.all(5),
                               decoration: BoxDecoration(
@@ -96,7 +127,7 @@ class CustomCard extends StatelessWidget {
                                         color: Colors.white, fontSize: 10),
                                   ),
                                   Text(
-                                    "$discount%",
+                                    "${widget.discount}%",
                                     style: const TextStyle(
                                         color: Colors.white, fontSize: 14),
                                   )
@@ -110,37 +141,41 @@ class CustomCard extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      mealName,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+            child: GestureDetector(
+              onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => widget.kitchenpage!)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        widget.mealName,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    Row(
-                      children: [
-                        const Icon(Icons.star,
-                            color: Color(0xFFFFD233), size: 22),
-                        Text(rating)
-                      ],
-                    )
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(kitchenName),
-                    Text("$price دينار"),
-                  ],
-                ),
-              ],
+                      Row(
+                        children: [
+                          const Icon(Icons.star,
+                              color: Color(0xFFFFD233), size: 22),
+                          Text(widget.rating)
+                        ],
+                      )
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(widget.kitchenName),
+                      Text("${widget.price} دينار"),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ],

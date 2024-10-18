@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/model/meal_model.dart';
+import 'package:kojina_project/screen/auth-screen/profile_screen.dart';
+import 'package:kojina_project/screen/main-screen/kitcen_screen.dart';
+import 'package:kojina_project/screen/main-screen/meal_Screen.dart';
 import 'package:kojina_project/widget/card/arji3a.dart';
 import 'package:kojina_project/widget/card/kitchen_card.dart';
 import 'package:kojina_project/widget/clickables/catagorybutton.dart';
@@ -16,7 +19,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-   List<Meal> meals = [
+  List<Meal> meals = [
     Meal(
         mealName: "وجبة العرجيعة",
         imageUrl: "assets/meal1.png",
@@ -60,114 +63,118 @@ class _HomeScreenState extends State<HomeScreen> {
         rating: "4.3",
         price: 55),
   ];
-    int selectedCategory = 0;
-    final controller = TextEditingController();
-
+  int selectedCategory = 0;
+  final controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        child: Column(
-          children: [
-            CustomeSearchBar(
-              controller: controller,
-              hint: "ابحث عن وجبتك",
-              prefix: const Icon(
-                Icons.search,
-                size: 30,
+      child: Column(
+        children: [
+          CustomeSearchBar(
+            controller: controller,
+            hint: "ابحث عن وجبتك",
+            prefix: const Icon(
+              Icons.search,
+              size: 30,
+            ),
+            suffix: const Icon(
+              Icons.filter_alt_outlined,
+              size: 30,
+            ),
+          ),
+          Column(
+            children: [
+              const CustomLabel(
+                text: "الوجبات المتاحة",
+                clickhere: "انظر للمزيد",
               ),
-              suffix: const Icon(
-                Icons.filter_alt_outlined,
-                size: 30,
-              ),
-            ),
-            Column(
-              children: [
-                const CustomLabel(
-                  text: "الوجبات المتاحة",
-                  clickhere: "انظر للمزيد",
-                ),
-                SizedBox(
-                  height: getsize(context).height * 0.30,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return CustomCard(
-                          discount: 55,
-                          mealName: meals[index].mealName,
-                          imageUrl: meals[index].imageUrl,
-                          kitchenName: meals[index].kitchenName,
-                          rating: meals[index].rating,
-                          price: meals[index].price);
-                    },
-                    itemCount: meals.length,
-                  ),
-                ),
-              ],
-            ),
-            const CustomLabel(
-              text: "الأصناف الجديدة",
-              clickhere: "انظر للمزيد",
-              Sizefont: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 32),
-              child: SizedBox(
-                height: 50,
-                width: getsize(context).width,
+              SizedBox(
+                height: getsize(context).height * 0.30,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 5,
                   itemBuilder: (context, index) {
-                    return CategoryButton(
-                      text: "الكل",
-                      onPressed: () {
-                        setState(() {
-                          selectedCategory = index;
-                        });
-                      },
-                      isSlected: index == selectedCategory,
-                    );
+                    return CustomCard(
+                        // must add to the model
+                        mealpage: const MealScreen(),
+                        // kitchenpage didnot work
+                        kitchenpage: const KitchenScreen(),
+                        discount: 55,
+                        mealName: meals[index].mealName,
+                        imageUrl: meals[index].imageUrl,
+                        kitchenName: meals[index].kitchenName,
+                        rating: meals[index].rating,
+                        price: meals[index].price);
                   },
+                  itemCount: meals.length,
                 ),
               ),
-            ),
-            SizedBox(
-              height: getsize(context).height * 0.30,
+            ],
+          ),
+          const CustomLabel(
+            text: "الأصناف الجديدة",
+            clickhere: "انظر للمزيد",
+            Sizefont: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 32),
+            child: SizedBox(
+              height: 50,
               width: getsize(context).width,
               child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return const CustomCard(
-                        mealName: "وجبة العرجيعة",
-                        imageUrl: "assets/meal1.png",
-                        kitchenName: "مطبخ جميرا",
-                        rating: "4",
-                        price: 35);
-                  }),
-            ),
-            const CustomLabel(
-              text: "المطابخ",
-              Sizefont: 20,
-              clickhere: "انظر للمزيد",
-            ),
-            ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 6,
+                scrollDirection: Axis.horizontal,
+                itemCount: 5,
                 itemBuilder: (context, index) {
-                  return KitchenCard(
+                  return CategoryButton(
+                    text: "الكل",
+                    onPressed: () {
+                      setState(() {
+                        selectedCategory = index;
+                      });
+                    },
+                    isSlected: index == selectedCategory,
+                  );
+                },
+              ),
+            ),
+          ),
+          SizedBox(
+            height: getsize(context).height * 0.30,
+            width: getsize(context).width,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return const CustomCard(
+                      mealName: "وجبة العرجيعة",
                       imageUrl: "assets/meal1.png",
                       kitchenName: "مطبخ جميرا",
                       rating: "4",
-                      price: 35,
-                      mineimage: "assets/meal1.png",
-                      catagory: "مشاوي ");
+                      price: 35);
                 }),
-          ],
-        ),
-      );
+          ),
+          const CustomLabel(
+            text: "المطابخ",
+            Sizefont: 20,
+            clickhere: "انظر للمزيد",
+          ),
+          ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 6,
+              itemBuilder: (context, index) {
+                return KitchenCard(
+                    kitchenpage: KitchenScreen(),
+                    imageUrl: "assets/meal1.png",
+                    kitchenName: "مطبخ جميرا",
+                    rating: "4",
+                    price: 35,
+                    mineimage: "assets/meal1.png",
+                    catagory: "مشاوي ");
+              }),
+        ],
+      ),
+    );
   }
 }
