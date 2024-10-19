@@ -1,27 +1,25 @@
-// ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/consts.dart';
-import 'package:kojina_project/screen/auth-screen/singup_screen.dart';
 
-class forgetPassword extends StatefulWidget {
+class ForGetPassword extends StatefulWidget {
   final String text1;
   final String text2;
   final Color text1color = tertiaryDark;
   final Color text2color = mainColor;
   final Function onPressed;
   final Widget nextpage;
-  const forgetPassword(
+  const ForGetPassword(
       {super.key,
       required this.text1,
       required this.text2,
       required this.nextpage, required this.onPressed});
 
   @override
-  State<forgetPassword> createState() => _forgetPasswordState();
+  State<ForGetPassword> createState() => _ForGetPasswordState();
 }
 
-class _forgetPasswordState extends State<forgetPassword> {
+class _ForGetPasswordState extends State<ForGetPassword> {
   @override
   Widget build(BuildContext context) {
     return Row(

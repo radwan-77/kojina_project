@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/model/meal_model.dart';
-import 'package:kojina_project/screen/auth-screen/profile_screen.dart';
 import 'package:kojina_project/screen/main-screen/kitcen_screen.dart';
 import 'package:kojina_project/screen/main-screen/meal_Screen.dart';
 import 'package:kojina_project/widget/card/arji3a.dart';
@@ -12,7 +10,9 @@ import 'package:kojina_project/widget/input/searchbar.dart';
 import 'package:kojina_project/widget/static/custom_label.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  HomeScreen({
+    super.key,
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         // must add to the model
                         mealpage: const MealScreen(),
                         // kitchenpage didnot work
-                        kitchenpage: const KitchenScreen(),
+                        kitchenpage: KitchenScreen(),
                         discount: 55,
                         mealName: meals[index].mealName,
                         imageUrl: meals[index].imageUrl,
@@ -165,13 +165,15 @@ class _HomeScreenState extends State<HomeScreen> {
               itemCount: 6,
               itemBuilder: (context, index) {
                 return KitchenCard(
-                    kitchenpage: KitchenScreen(),
-                    imageUrl: "assets/meal1.png",
-                    kitchenName: "مطبخ جميرا",
-                    rating: "4",
-                    price: 35,
-                    mineimage: "assets/meal1.png",
-                    catagory: "مشاوي ");
+                  // kitchenpage:  KitchenScreen(),
+                  imageUrl: "assets/meal1.png",
+                  kitchenName: "مطبخ جميرا",
+                  rating: "4",
+                  price: 35,
+                  mineimage: "assets/meal1.png",
+                  catagory: "مشاوي ",
+                  kitchenpage: KitchenScreen(),
+                );
               }),
         ],
       ),

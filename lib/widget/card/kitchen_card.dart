@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 
-class KitchenCard extends StatelessWidget {
+class KitchenCard extends StatefulWidget {
   final double price;
   final String imageUrl;
   final String kitchenName;
   final String rating;
-  final String mineimage;
+  final String? mineimage;
   final String catagory;
   final Widget? kitchenpage;
 
@@ -16,18 +16,30 @@ class KitchenCard extends StatelessWidget {
     required this.kitchenName,
     required this.rating,
     required this.price,
-    required this.mineimage,
-    required this.catagory, this.kitchenpage,
+    this.mineimage,
+    required this.catagory,
+    this.kitchenpage,
   });
 
+  @override
+  State<KitchenCard> createState() => _KitchenCardState();
+}
+
+class _KitchenCardState extends State<KitchenCard> {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.only(bottom: 20),
         child: GestureDetector(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => kitchenpage!)),
+          onTap: () {
+            if (widget.kitchenpage != null) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => widget.kitchenpage!),
+              );
+            }
+          },
           child: Container(
             width: getsize(context).width,
             height: getsize(context).height * 0.3,
@@ -55,7 +67,7 @@ class KitchenCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.asset(
-                      imageUrl,
+                      widget.imageUrl,
                       height: getsize(context).height * 0.2,
                       width: getsize(context).width * 0.9,
                       fit: BoxFit.cover,
@@ -76,7 +88,7 @@ class KitchenCard extends StatelessWidget {
                             child: Container(
                               child: ClipOval(
                                 child: Image.asset(
-                                  mineimage,
+                                  widget.mineimage!,
                                   width: 62,
                                   height: 62,
                                   fit: BoxFit.cover,
@@ -98,7 +110,7 @@ class KitchenCard extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      kitchenName,
+                                      widget.kitchenName!,
                                       style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
@@ -126,7 +138,7 @@ class KitchenCard extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
-                                      catagory,
+                                      widget.catagory!,
                                       style: const TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.bold,
@@ -139,7 +151,7 @@ class KitchenCard extends StatelessWidget {
                                       children: [
                                         const Icon(Icons.star,
                                             color: Color(0xFFFFD233), size: 22),
-                                        Text(rating)
+                                        Text(widget.rating!)
                                       ],
                                     ),
                                   ],

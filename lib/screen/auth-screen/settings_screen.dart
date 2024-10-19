@@ -1,13 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kojina_project/helper/consts.dart';
-import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/widget/static/custom_label.dart';
-import 'package:kojina_project/widget/static/listtiledrawer.dart';
 import 'package:kojina_project/widget/static/profiletile.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({
+class SettingsSCreen extends StatelessWidget {
+  const SettingsSCreen({
     super.key,
   });
 
@@ -26,21 +22,21 @@ class ProfileScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          Divider(),
-          ProfileTile(
+          const Divider(),
+          const ProfileTile(
             title: "الأعدادات",
             icon: Icons.settings,
           ),
-          ProfileTile(
+          const ProfileTile(
             title: "الأعدادات",
             icon: Icons.settings,
           ),
-          ProfileTile(
+          const ProfileTile(
             title: "الأعدادات",
             icon: Icons.settings,
           ),
-          CustomLabel(text: "text"),
-          ProfileTile(
+          const CustomLabel(text: "text"),
+          const ProfileTile(
             title: "الأعدادات",
             icon: Icons.settings,
           ),

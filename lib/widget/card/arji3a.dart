@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
-import 'package:kojina_project/screen/main-screen/meal_Screen.dart';
 
 class CustomCard extends StatefulWidget {
   final String mealName;
@@ -142,8 +141,12 @@ class _CustomCardState extends State<CustomCard> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
-              onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => widget.kitchenpage!)),
+              onTap: () {
+                if (widget.kitchenpage != null) {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => widget.kitchenpage!));
+                }
+              },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,

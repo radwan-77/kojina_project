@@ -5,14 +5,14 @@ import 'package:kojina_project/widget/card/kitchen_card_mini.dart';
 import 'package:kojina_project/widget/static/custom_label.dart';
 import 'package:kojina_project/widget/static/customtabbar.dart';
 
-class KitchenScreen extends StatefulWidget {
-  const KitchenScreen({super.key});
+class FillFavirioteScreen extends StatefulWidget {
+  const FillFavirioteScreen({super.key});
 
   @override
-  State<KitchenScreen> createState() => _KitchenScreenState();
+  State<FillFavirioteScreen> createState() => _FillFavirioteScreenState();
 }
 
-class _KitchenScreenState extends State<KitchenScreen>
+class _FillFavirioteScreenState extends State<FillFavirioteScreen>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
@@ -27,26 +27,27 @@ class _KitchenScreenState extends State<KitchenScreen>
           customtabbar(
             text1: "text1",
             text2: "text2",
-            tab1: Column(
-              children: [
-                CustomLabel(text: "حلويات"),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: 5,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return KitchenCard(
-                        imageUrl: "assets/meal1.png",
-                        kitchenName: "مطبخ الامير",
-                        rating: "4.5",
-                        price: 100,
-                        mineimage: "assets/meal1.png",
-                        catagory: "مطبخ",
-                      );
-                    },
+            tab1: Expanded(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: 5,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return KitchenCard(
+                          imageUrl: "assets/meal1.png",
+                          kitchenName: "مطبخ الامير",
+                          rating: "4.5",
+                          price: 100,
+                          mineimage: "assets/meal1.png",
+                          catagory: "مطبخ",
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             tab2: Column(
               // when use singelchildscrollview the content disapper

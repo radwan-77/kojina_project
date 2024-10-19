@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kojina_project/generated/l10n.dart';
-import 'package:kojina_project/screen/cart-screen/empty_cart_screen.dart';
-import 'package:kojina_project/screen/cart-screen/my_cart.dart';
 import 'package:kojina_project/screen/faviriote-screen/fav_screen.dart';
-import 'package:kojina_project/screen/main-screen/main_S.dart';
+import 'package:kojina_project/screen/faviriote-screen/fill_fav_screen.dart';
+import 'package:kojina_project/screen/main-screen/kitcen_screen.dart';
+import 'package:kojina_project/screen/main-screen/main_screen.dart';
+
+import 'package:kojina_project/screen/notification_screen/notification_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +34,7 @@ class _MyAppState extends State<MyApp> {
       ],
       supportedLocales: S.delegate.supportedLocales,
       debugShowCheckedModeBanner: false,
-      home: MycartScreen(),
+      home: KitchenScreen(),
     );
   }
 }

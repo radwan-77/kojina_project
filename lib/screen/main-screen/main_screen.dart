@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
+import 'package:kojina_project/screen/auth-screen/settings_screen.dart';
 import 'package:kojina_project/screen/cart-screen/empty_cart_screen.dart';
 import 'package:kojina_project/screen/faviriote-screen/fav_screen.dart';
 import 'package:kojina_project/screen/main-screen/add_new_location.dart';
@@ -14,7 +14,9 @@ import 'package:kojina_project/screen/ordre_screen/order_screen.dart';
 import 'package:kojina_project/widget/static/listtiledrawer.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  const MainScreen({
+    super.key,
+  });
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -22,15 +24,14 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   List<Widget> screens = [
-    const HomeScreen(),
+    HomeScreen(),
     const FavoriteScreen(),
     const OrderScreen(),
     const CartScreen(),
   ];
- 
+
   int curruntindex = 0;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,6 @@ class _MainScreenState extends State<MainScreen> {
           onTabChange: (int newindex) {
             setState(() {
               curruntindex = newindex;
-              
             });
           },
           haptic: false,
@@ -85,7 +85,9 @@ class _MainScreenState extends State<MainScreen> {
               nextpage: null,
               icon: Icons.wallet_membership),
           const ListTileDrawer(
-              titletext: "الأعدادات", nextpage: null, icon: Icons.settings),
+              titletext: "الأعدادات",
+              nextpage: SettingsSCreen(),
+              icon: Icons.settings),
           const Divider(),
           const ListTileDrawer(
               titletext: "حول البرنامج",
@@ -100,22 +102,22 @@ class _MainScreenState extends State<MainScreen> {
             ClipOval(
               child: Image.asset(
                 "assets/X.png",
-                width: 60,
-                height: 60,
+                width: 50,
+                height: 50,
               ),
             ),
             ClipOval(
               child: Image.asset(
                 "assets/ins.png",
-                width: 60,
-                height: 60,
+                width: 50,
+                height: 50,
               ),
             ),
             ClipOval(
               child: Image.asset(
                 "assets/facebook.png",
-                width: 60,
-                height: 60,
+                width: 50,
+                height: 50,
               ),
             ),
           ])
@@ -178,6 +180,3 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
-
-
-

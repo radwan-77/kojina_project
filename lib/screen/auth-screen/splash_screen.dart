@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kojina_project/screen/auth-screen/login_screen.dart';
-import 'package:kojina_project/screen/main-screen/main_S.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
