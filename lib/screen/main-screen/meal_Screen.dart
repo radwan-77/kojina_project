@@ -33,11 +33,11 @@ class _MealScreenState extends State<MealScreen> {
                 children: [
                   Text(
                     "وجبة العرجيعة",
-                    style: titleStyle,
+                    style: semiBold12,
                   ),
                   Text(
                     "35 دينار ",
-                    style: titleStyle,
+                    style: semiBold12,
                   ),
                 ],
               ),
@@ -70,7 +70,7 @@ class _MealScreenState extends State<MealScreen> {
                     ),
                     Text(
                       "${intquantity.toString()}",
-                      style: titleStyle,
+                      style: bold15,
                     ),
                     IconButton(
                       onPressed: () {
@@ -85,7 +85,7 @@ class _MealScreenState extends State<MealScreen> {
                 ),
                 Text(
                   "الكمية",
-                  style: titleStyle,
+                  style: bold15,
                 ),
               ],
             ),

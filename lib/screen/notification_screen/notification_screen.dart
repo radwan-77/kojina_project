@@ -18,19 +18,36 @@ class _NotificationScreenState extends State<NotificationScreen>
     TabController tabController = TabController(length: 2, vsync: this);
     return Scaffold(
       body: customtabbar(
-          tabController: tabController,
-          text1: "الاشعارات",
-          text2: "الرسائل",
-          tab1: const Center(
-            child: Column(
-              children: [Text("الاشعارات")],
-            ),
+        tabController: tabController,
+        text1: "الاشعارات",
+        text2: "الرسائل",
+        tab1: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                "assets/notification.png",
+                width: getsize(context).width * 0.5,
+              ),
+              Text("لا توجد طلبات بعد", style: bold20),
+              Text("تصفح مختلف انواع الوجبات والمطاعم", style: bold20),
+            ],
           ),
-          tab2: const Center(
-            child: Column(
-              children: [Text("d")],
-            ),
-          )),
+        ),
+        tab2: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                "assets/chat.png",
+                width: getsize(context).width * 0.5,
+              ),
+              Text("لا توجد طلبات بعد", style: bold20),
+              Text("تصفح مختلف انواع الوجبات والمطاعم", style: bold20),
+            ],
+          ),
+        ),
+      ),
       appBar: AppBar(
         centerTitle: true,
         title: const Text("الاشعارات"),
@@ -38,4 +55,3 @@ class _NotificationScreenState extends State<NotificationScreen>
     );
   }
 }
-

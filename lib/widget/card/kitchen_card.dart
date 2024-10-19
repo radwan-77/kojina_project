@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 
@@ -81,7 +83,6 @@ class _KitchenCardState extends State<KitchenCard> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(left: 8),
@@ -101,64 +102,65 @@ class _KitchenCardState extends State<KitchenCard> {
                               ),
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             width: getsize(context).width * 0.65,
                             child: Column(
                               children: [
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  // mainAxisAlignment:
+                                  //     MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      widget.kitchenName!,
+                                      widget.kitchenName,
                                       style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    Container(
-                                      width: getsize(context).width * 0.2,
-                                      height: getsize(context).height * 0.04,
-                                      decoration: BoxDecoration(
-                                        color: mainColor,
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          "مفتوح",
-                                          style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                      ),
-                                    )
                                   ],
                                 ),
                                 Row(
                                   children: [
                                     Text(
-                                      widget.catagory!,
+                                      widget.catagory,
                                       style: const TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.bold,
                                           color: tertiaryDark),
-                                    ),
-                                    SizedBox(
-                                      width: 140,
-                                    ),
-                                    Row(
-                                      children: [
-                                        const Icon(Icons.star,
-                                            color: Color(0xFFFFD233), size: 22),
-                                        Text(widget.rating!)
-                                      ],
                                     ),
                                   ],
                                 ),
                               ],
                             ),
                           ),
+                          Column(
+                            children: [
+                              Container(
+                                width: getsize(context).width * 0.2,
+                                height: getsize(context).height * 0.04,
+                                decoration: BoxDecoration(
+                                  color: mainColor,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "مفتوح",
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  const Icon(Icons.star,
+                                      color: Color(0xFFFFD233), size: 22),
+                                  Text(widget.rating)
+                                ],
+                              )
+                            ],
+                          )
                         ],
                       ),
                     ],

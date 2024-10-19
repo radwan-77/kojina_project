@@ -36,7 +36,7 @@ class _IngradiantsRowState extends State<IngradiantsRow> {
               ),
               Text(
                 widget.ingradiants,
-                style: titleStyle,
+                style: bold12,
               ),
             ],
           ),

@@ -140,14 +140,14 @@ class _MainScreenState extends State<MainScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 4),
-                Text("الموقع", style: titleStyle),
+                Text("الموقع", style: bold15),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
                       "  العمل",
-                      style: bodyStyle,
+                      style: bold15,
                     ),
                     const Icon(
                       Icons.arrow_drop_down,
