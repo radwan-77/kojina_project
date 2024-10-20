@@ -34,6 +34,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
+  geolocator: 
   google_nav_bar: 
   url_launcher: 
   http: 
@@ -41,11 +42,23 @@ dependencies:
   shared_preferences: 
   flutter_localizations:
         sdk: flutter
+
   
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/logo/ic_launcher_foreground.png"
+  image_path_ios: "assets/logo/play_store_512.png"
+  remove_alpha_ios: true
+  adaptive_icon_background: "assets/logo/ic_launcher_background.png"
+  adaptive_icon_foreground: "assets/logo/ic_launcher_foreground.png"
+  adaptive_icon_padding: true
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -68,6 +81,7 @@ flutter:
   assets:
     - assets/
     - assets/icons/
+    - assets/logo/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
