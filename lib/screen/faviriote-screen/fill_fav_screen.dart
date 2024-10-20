@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kojina_project/screen/main-screen/kitcen_screen.dart';
 import 'package:kojina_project/widget/card/kitchen_card.dart';
 import 'package:kojina_project/widget/card/kitchen_card_mini.dart';
-import 'package:kojina_project/widget/static/custom_label.dart';
 import 'package:kojina_project/widget/static/customtabbar.dart';
 
 class FillFavirioteScreen extends StatefulWidget {

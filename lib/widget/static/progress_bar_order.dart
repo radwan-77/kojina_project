@@ -6,6 +6,7 @@ class ProgressBarOrder extends StatelessWidget {
   final bool isDone1;
   final bool isDone2;
   final bool isDone3;
+  // current index and set greater than
 
   const ProgressBarOrder({
     super.key,

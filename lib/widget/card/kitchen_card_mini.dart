@@ -13,34 +13,53 @@ class kitchencardmini extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          margin: const EdgeInsets.only(right: 25, left: 25, top: 25),
-          width: getsize(context).width,
-          height: getsize(context).height * 0.2,
-          decoration: BoxDecoration(
-            color: tertiaryDark,
-            borderRadius: BorderRadius.circular(20),
-            image: DecorationImage(
-              image: AssetImage(mainimage),
-              fit: BoxFit.cover,
+    return Padding(
+      padding: const EdgeInsets.all(24),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: Stack(
+          children: [
+            Container(
+              width: getsize(context).width,
+              height: getsize(context).height * 0.3,
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.asset(
+                      fit: BoxFit.cover,
+                      mainimage,
+                      width: getsize(context).width,
+                      height: getsize(context).height * 0.2,
+                    ),
+                  ),
+                  SizedBox(
+                    height: getsize(context).height * 0.1,
+                  )
+                ],
+              ),
             ),
-          ),
+            Positioned(
+              bottom: 50,
+              right: 30,
+              // how to use Overflow
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: Image.asset(
+                  fit: BoxFit.cover,
+                  miniimage,
+                  width: 100,
+                  height: 100,
+                ),
+              ),
+            )
+          ],
         ),
-        Positioned(
-          bottom: -40,
-          right: 50,
-          // how to use Overflow
-          child: ClipOval(
-            child: Image.asset(
-              miniimage,
-              width: 100,
-              height: 100,
-            ),
-          ),
-        )
-      ],
+      ),
     );
   }
 }

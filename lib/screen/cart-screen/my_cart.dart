@@ -43,11 +43,13 @@ class _MycartScreenState extends State<MycartScreen> {
                 bottom: -20,
                 left: 0,
                 right: 0,
-                child: AddToCartButton(text: "text", onPressed: () {}))
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 120),
+                  child: AddToCartButton(text: "text", onPressed: () {}),
+                ))
           ],
         ),
       ),
     );
   }
 }
-

@@ -12,7 +12,20 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'Forget Password Screen',
+            style: TextStyle(fontSize: 24),
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              // Add your onPressed code here!
+            },
+            child: Text('Reset Password'),
+          ),
+        ],
       ),
 
     );

@@ -45,10 +45,6 @@ class _KitchenCardState extends State<KitchenCard> {
           child: Container(
             width: getsize(context).width,
             height: getsize(context).height * 0.3,
-            margin: const EdgeInsets.only(
-              right: 25,
-              left: 25,
-            ),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
@@ -103,21 +99,15 @@ class _KitchenCardState extends State<KitchenCard> {
                             ),
                           ),
                           SizedBox(
-                            width: getsize(context).width * 0.65,
+                            // width: getsize(context).width * 0.65,
                             child: Column(
                               children: [
-                                Row(
-                                  // mainAxisAlignment:
-                                  //     MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      widget.kitchenName,
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
+                                Text(
+                                  widget.kitchenName,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                                 Row(
                                   children: [
