@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/consts.dart';
+import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/widget/clickables/add_to_cart_button.dart';
 import 'package:kojina_project/widget/static/custom_label.dart';
 import 'package:kojina_project/widget/static/ingradiant_row.dart';
@@ -27,29 +28,30 @@ class _MealScreenState extends State<MealScreen> {
           children: [
             Image.asset("assets/meal1.png"),
             Padding(
-              padding: const EdgeInsets.only(right: 8, left: 8),
+              padding: const EdgeInsets.only(right: 8, left: 8, top: 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "وجبة العرجيعة",
-                    style: semiBold12,
+                    style: bold16,
                   ),
                   Text(
                     "35 دينار ",
-                    style: semiBold12,
+                    style: bold16,
                   ),
                 ],
               ),
             ),
-            const Row(
+            Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Expanded(
+                Flexible(
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.only(left: 50, right: 10),
                     child: Text(
                       "أرز متبل بالتوابل العربية مثل الزعفران والهيل، يُقدم مع قطع لحم مشوي طري (دجاج أو غنم)، بنكهة مدخنة خفيفة. وجبة شهية ومناسبة لفرد واحد.",
+                      style: normal15,
                     ),
                   ),
                 ),
@@ -126,6 +128,9 @@ class _MealScreenState extends State<MealScreen> {
               ingimage: "assets/meal1.png",
               ingradiants: "ملح",
             ),
+            SizedBox(
+              height: getsize(context).height * 0.1,
+            )
           ],
         ),
       ),

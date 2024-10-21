@@ -5,6 +5,7 @@ import 'package:kojina_project/screen/auth-screen/settings_screen.dart';
 
 import 'package:kojina_project/screen/main-screen/main_screen.dart';
 import 'package:kojina_project/screen/location-screen/location_1.dart';
+import 'package:kojina_project/screen/main-screen/meal_Screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +33,7 @@ class _MyAppState extends State<MyApp> {
       ],
       supportedLocales: S.delegate.supportedLocales,
       debugShowCheckedModeBanner: false,
-      home: TestScreen(),
+      home: MealScreen(),
     );
   }
 }

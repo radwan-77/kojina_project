@@ -17,7 +17,7 @@ class _LocationScreen1State extends State<LocationScreen1> {
   Position? inpositon;
   late GoogleMapController _googleMapController;
   Marker? _currentlocation;
-  bool btnPressed = false;
+  bool btnPressed = true;
 
   void getlocation() async {
     await Geolocator.checkPermission();
@@ -66,81 +66,90 @@ class _LocationScreen1State extends State<LocationScreen1> {
         children: [
           inpositon == null
               ? const Center(child: CircularProgressIndicator())
-              : Container(
-                  height: getsize(context).height * 0.8,
-                  child: GoogleMap(
-                    initialCameraPosition: CameraPosition(
-                        target:
-                            LatLng(inpositon!.latitude, inpositon!.longitude),
-                        zoom: 5),
-                    onMapCreated: (controller) =>
-                        _googleMapController = controller,
-                    myLocationButtonEnabled: false,
-                    zoomControlsEnabled: false,
-                    markers: {
-                      if (_currentlocation != null) _currentlocation!,
-                    },
-                  ),
+              : Stack(
+                  children: [
+                    Container(
+                      height: getsize(context).height * 0.8,
+                      child: GoogleMap(
+                        initialCameraPosition: CameraPosition(
+                            target: LatLng(
+                                inpositon!.latitude, inpositon!.longitude),
+                            zoom: 14),
+                        onMapCreated: (controller) =>
+                            _googleMapController = controller,
+                        myLocationButtonEnabled: false,
+                        zoomControlsEnabled: false,
+                        markers: {
+                          if (_currentlocation != null) _currentlocation!,
+                        },
+                      ),
+                    ),
+
+                    ////////////////////////////  Button  ////////////////////////////
+                    Positioned(
+                        bottom: 10,
+                        right: 5,
+                        child: GestureDetector(
+                          onTap: () {
+                            _googleMapController.animateCamera(
+                              CameraUpdate.newCameraPosition(CameraPosition(
+                                  target: LatLng(inpositon!.latitude,
+                                      inpositon!.longitude),
+                                  zoom: 19)),
+                            );
+                          },
+                          child: Container(
+                            width: 180,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: mainColor,
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.location_on,
+                                  size: 30,
+                                ),
+                                Text(
+                                  "الموقع الحالي",
+                                  style: bold16,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ))
+                  ],
                 ),
           Container(
             height: getsize(context).height * 0.1,
             alignment: Alignment.center,
-            // height: double.minPositive,
-            color: mainColor,
             width: getsize(context).width,
-            child: btnPressed
-                ? ElevatedButton(
-                    child: const Text("تحديد الموقع"),
-                    onPressed: () {
-                      _googleMapController.animateCamera(
-                        CameraUpdate.newCameraPosition(
-                          CameraPosition(
-                              target: LatLng(
-                                  inpositon!.latitude, inpositon!.longitude),
-                              zoom: 19),
-                        ),
-                      );
-                      // setState(() {
-                      // btnPressed = !btnPressed;
-                      // });
-                    },
-                  )
-                : ElevatedButton(
-                    child: Text("تاكيد الموقع"),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => LocationScreen2()),
-                      );
-                    }),
+            child: SizedBox(
+              width: getsize(context).width * 0.9,
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: mainColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  child: Text(
+                    "تاكيد العنوان",
+                    style: bold20,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LocationScreen2()),
+                    );
+                  }),
+            ),
           )
         ],
       ),
     );
   }
 }
-
-
-
-
-
-
-
-// Scaffold(
-//       body: inpositon == null
-//           ? const Center(child: CircularProgressIndicator())
-//           : GoogleMap(
-//               initialCameraPosition: CameraPosition(
-//                   target: LatLng(inpositon!.latitude, inpositon!.longitude),
-//                   zoom: 5),
-//               onMapCreated: (controller) => _googleMapController = controller,
-//               myLocationButtonEnabled: false,
-//               zoomControlsEnabled: false,
-//               markers: {
-//                 if (_currentlocation != null) _currentlocation!,
-//               },
-//             ),
-            
-      
-//     );

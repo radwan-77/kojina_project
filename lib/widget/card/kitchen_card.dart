@@ -43,7 +43,7 @@ class _KitchenCardState extends State<KitchenCard> {
             }
           },
           child: Container(
-            width: getsize(context).width,
+            width: getsize(context).width * 0.9,
             height: getsize(context).height * 0.3,
             decoration: BoxDecoration(
               color: Colors.white,
@@ -74,14 +74,13 @@ class _KitchenCardState extends State<KitchenCard> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 8),
+                            padding: const EdgeInsets.only(left: 10),
                             child: Container(
                               child: ClipOval(
                                 child: Image.asset(
@@ -91,8 +90,6 @@ class _KitchenCardState extends State<KitchenCard> {
                                   fit: BoxFit.cover,
                                 ),
                               ),
-                              // width: 70,
-                              // height: 70,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(100),
                               ),
@@ -123,36 +120,36 @@ class _KitchenCardState extends State<KitchenCard> {
                               ],
                             ),
                           ),
-                          Column(
-                            children: [
-                              Container(
-                                width: getsize(context).width * 0.2,
-                                height: getsize(context).height * 0.04,
-                                decoration: BoxDecoration(
-                                  color: mainColor,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "مفتوح",
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                    ),
-                                  ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            width: getsize(context).width * 0.2,
+                            height: getsize(context).height * 0.04,
+                            decoration: BoxDecoration(
+                              color: mainColor,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "مفتوح",
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
                                 ),
                               ),
-                              Row(
-                                children: [
-                                  const Icon(Icons.star,
-                                      color: Color(0xFFFFD233), size: 22),
-                                  Text(widget.rating)
-                                ],
-                              )
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              const Icon(Icons.star,
+                                  color: Color(0xFFFFD233), size: 22),
+                              Text(widget.rating)
                             ],
                           )
                         ],
-                      ),
+                      )
                     ],
                   ),
                 ),

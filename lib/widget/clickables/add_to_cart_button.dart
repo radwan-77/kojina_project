@@ -51,7 +51,13 @@ class AddToCartButton extends StatelessWidget {
                 fontFamily: "cairo",
               ),
             ),
-            Icon(Icons.shopping_cart),
+            SizedBox(
+              width: 10,
+            ),
+            Icon(
+              Icons.shopping_cart,
+              color: onPrimaryLight,
+            ),
           ],
         ),
       ),

@@ -35,6 +35,19 @@ TextStyle bold20 = const TextStyle(
   color: onPrimaryLight,
   fontFamily: 'Cairo',
 );
+TextStyle bold18 = const TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.bold,
+  color: onPrimaryLight,
+  fontFamily: 'Cairo',
+);
+TextStyle bold16 = const TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.bold,
+  color: onPrimaryLight,
+  fontFamily: 'Cairo',
+);
+
 TextStyle bold15 = const TextStyle(
   fontSize: 15,
   fontWeight: FontWeight.bold,

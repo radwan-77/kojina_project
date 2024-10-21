@@ -26,17 +26,17 @@ class _IngradiantsRowState extends State<IngradiantsRow> {
         children: [
           Row(
             children: [
-              Image.asset(
-                widget.ingimage,
-                width: 70,
-                height: 60,
-              ),
+              // Image.asset(
+              //   widget.ingimage,
+              //   width: 70,
+              //   height: 60,
+              // ),
               SizedBox(
                 width: 10,
               ),
               Text(
                 widget.ingradiants,
-                style: bold12,
+                style: bold16,
               ),
             ],
           ),
