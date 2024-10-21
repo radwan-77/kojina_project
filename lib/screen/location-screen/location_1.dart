@@ -4,23 +4,25 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
+import 'package:kojina_project/screen/location-screen/location_2.dart';
 
-class TestScreen extends StatefulWidget {
-  const TestScreen({super.key});
+class LocationScreen1 extends StatefulWidget {
+  const LocationScreen1({super.key});
 
   @override
-  State<TestScreen> createState() => _TestScreenState();
+  State<LocationScreen1> createState() => _LocationScreen1State();
 }
 
-class _TestScreenState extends State<TestScreen> {
+class _LocationScreen1State extends State<LocationScreen1> {
   Position? inpositon;
   late GoogleMapController _googleMapController;
   Marker? _currentlocation;
+  bool btnPressed = false;
 
   void getlocation() async {
     await Geolocator.checkPermission();
     await Geolocator.requestPermission();
-    
+
     inpositon = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.low);
     setState(() {
@@ -30,11 +32,8 @@ class _TestScreenState extends State<TestScreen> {
         icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
         position: LatLng(inpositon!.latitude, inpositon!.longitude),
 
-        
-        
         // Set position
       );
-      
     });
 
     if (kDebugMode) {
@@ -89,19 +88,32 @@ class _TestScreenState extends State<TestScreen> {
             // height: double.minPositive,
             color: mainColor,
             width: getsize(context).width,
-            child: ElevatedButton(
-              child: const Text("تحديد الموقع"),
-              onPressed: () {
-                _googleMapController.animateCamera(
-                  CameraUpdate.newCameraPosition(
-                    CameraPosition(
-                        target:
-                            LatLng(inpositon!.latitude, inpositon!.longitude),
-                        zoom: 19),
-                  ),
-                );
-              },
-            ),
+            child: btnPressed
+                ? ElevatedButton(
+                    child: const Text("تحديد الموقع"),
+                    onPressed: () {
+                      _googleMapController.animateCamera(
+                        CameraUpdate.newCameraPosition(
+                          CameraPosition(
+                              target: LatLng(
+                                  inpositon!.latitude, inpositon!.longitude),
+                              zoom: 19),
+                        ),
+                      );
+                      // setState(() {
+                      // btnPressed = !btnPressed;
+                      // });
+                    },
+                  )
+                : ElevatedButton(
+                    child: Text("تاكيد الموقع"),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LocationScreen2()),
+                      );
+                    }),
           )
         ],
       ),

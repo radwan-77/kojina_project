@@ -4,7 +4,7 @@ import 'package:kojina_project/generated/l10n.dart';
 import 'package:kojina_project/screen/auth-screen/settings_screen.dart';
 
 import 'package:kojina_project/screen/main-screen/main_screen.dart';
-import 'package:kojina_project/screen/test.dart';
+import 'package:kojina_project/screen/location-screen/location_1.dart';
 
 void main() {
   runApp(const MyApp());
