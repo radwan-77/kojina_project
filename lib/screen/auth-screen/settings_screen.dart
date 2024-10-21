@@ -23,22 +23,25 @@ class SettingsSCreen extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const ProfileTile(
-            title: "الأعدادات",
-            icon: Icons.settings,
+          CustomLabel(text: "الأعدادات"),
+          ProfileTile(
+            title: "اللغة",
+            subtitle: "العربية",
+            icon: Icons.language,
           ),
-          const ProfileTile(
-            title: "الأعدادات",
-            icon: Icons.settings,
+          ProfileTile(
+            title: "الاشعارات",
+            subtitle: "مفعلة",
+            icon: Icons.notifications,
           ),
-          const ProfileTile(
-            title: "الأعدادات",
-            icon: Icons.settings,
+          ProfileTile(
+            title: "المساعدة",
+            icon: Icons.help,
           ),
-          const CustomLabel(text: "text"),
-          const ProfileTile(
-            title: "الأعدادات",
-            icon: Icons.settings,
+          ProfileTile(
+            title: "تسجيل الخروج",
+            icon: Icons.logout,
+            isArrow: false,
           ),
         ],
       ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kojina_project/generated/l10n.dart';
+import 'package:kojina_project/screen/auth-screen/settings_screen.dart';
 
 import 'package:kojina_project/screen/main-screen/main_screen.dart';
-
-
+import 'package:kojina_project/screen/test.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
       ],
       supportedLocales: S.delegate.supportedLocales,
       debugShowCheckedModeBanner: false,
-      home: MainScreen(),
+      home: TestScreen(),
     );
   }
 }
