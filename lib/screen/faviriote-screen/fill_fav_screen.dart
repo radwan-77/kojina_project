@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:kojina_project/widget/card/kitchen_card.dart';
+import 'package:kojina_project/helper/function_helper.dart';
+import 'package:kojina_project/provider/favorite_provider.dart';
+import 'package:kojina_project/provider/meals_provider.dart';
+import 'package:kojina_project/widget/card/arji3a.dart';
 import 'package:kojina_project/widget/card/kitchen_card_mini.dart';
+import 'package:kojina_project/widget/static/custom_label.dart';
 import 'package:kojina_project/widget/static/custom_tabbar.dart';
+import 'package:provider/provider.dart';
 
 class FillFavirioteScreen extends StatefulWidget {
   const FillFavirioteScreen({super.key});
@@ -10,75 +15,83 @@ class FillFavirioteScreen extends StatefulWidget {
   State<FillFavirioteScreen> createState() => _FillFavirioteScreenState();
 }
 
-class _FillFavirioteScreenState extends State<FillFavirioteScreen>
-    with TickerProviderStateMixin {
+class _FillFavirioteScreenState extends State<FillFavirioteScreen> {
   @override
   Widget build(BuildContext context) {
+    return Consumer<FavoriteProvider>(builder: (context, favoriteConsumer, _) {
+      return Consumer<MealsProvider>(builder: (context, mealsConsumer, _) {
+        return Scaffold(
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                kitchencardmini(
+                    mainimage: "assets/meal1.png",
+                    miniimage: "assets/face.png"),
+                CustomTabbar(
+                  toppadding: 10,
+                  tabs: [
+                    Tab(
+                      text: "مطابخ",
+                    ),
+                    Tab(
+                      text: "وجبات",
+                    ),
+                  ],
+                  contents: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        //////////////kitchen card///////////////////
+                        Text("Under development"),
+                      ],
+                    ),
 
-    return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: [
-          kitchencardmini(
-              mainimage: "assets/meal1.png", miniimage: "assets/face.png"),
-          CustomTabbar(
-            tabs: [
-              Tab(
-                text: "حلويات",
-              ),
-              Tab(
-                text: "مطبخ",
-              ),
-            ],
-            contents: [
-              Expanded(
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: 5,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return KitchenCard(
-                            imageUrl: "assets/meal1.png",
-                            kitchenName: "مطبخ الامير",
-                            rating: "4.5",
-                            price: 100,
-                            mineimage: "assets/meal1.png",
-                            catagory: "مطبخ",
-                          );
-                        },
-                      ),
+                    ////////////meals card/////////////////////
+                    Column(
+                      // when use singelchildscrollview the content disapper
+                      children: [
+                        CustomLabel(
+                          text: "Kitchen name",
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        SizedBox(
+                          // width: getsize(context).width * 0.7,
+
+                          // The height is set to ensure that the ListView.builder has a defined space to render its items.
+                          // Without a defined height, the ListView.builder might not render correctly or might cause layout issues.
+                          height: getsize(context).height * 0.3,
+                          child: ListView.builder(
+                            // physics: NeverScrollableScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            itemCount: favoriteConsumer.favoriteItems.length,
+                            itemBuilder: (context, index) {
+                              return CustomCard(
+                                meal: mealsConsumer.meals[index],
+                                mealName: favoriteConsumer
+                                    .favoriteItems[index].mealName,
+                                imageUrl: favoriteConsumer
+                                    .favoriteItems[index].imageUrl,
+                                kitchenName: favoriteConsumer
+                                    .favoriteItems[index].kitchenName,
+                                rating: favoriteConsumer
+                                    .favoriteItems[index].rating,
+                                price:
+                                    favoriteConsumer.favoriteItems[index].price,
+                              );
+                            },
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ),
-              Column(
-                // when use singelchildscrollview the content disapper
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      scrollDirection: Axis.vertical,
-                      itemCount: 5,
-                      itemBuilder: (context, index) {
-                        return KitchenCard(
-                          imageUrl: "assets/meal1.png",
-                          kitchenName: "مطبخ الامير",
-                          rating: "4.5",
-                          price: 100,
-                          mineimage: "assets/meal1.png",
-                          catagory: "مطبخ",
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
-        ],
-      ),
-    );
+        );
+      });
+    });
   }
 }

@@ -14,14 +14,14 @@ class kitchencardmini extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: Stack(
           children: [
             Container(
               width: getsize(context).width,
-              height: getsize(context).height * 0.3,
+              height: getsize(context).height * 0.23,
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 borderRadius: BorderRadius.circular(20),
@@ -37,14 +37,11 @@ class kitchencardmini extends StatelessWidget {
                       height: getsize(context).height * 0.2,
                     ),
                   ),
-                  SizedBox(
-                    height: getsize(context).height * 0.1,
-                  )
                 ],
               ),
             ),
             Positioned(
-              bottom: 50,
+              bottom: 0,
               right: 30,
               // how to use Overflow
               child: ClipRRect(

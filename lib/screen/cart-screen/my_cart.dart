@@ -14,41 +14,38 @@ class MycartScreen extends StatefulWidget {
 }
 
 class _MycartScreenState extends State<MycartScreen> {
-  int conter = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // floating action button from meal screen
       appBar: AppBar(),
-      body: Center(
-        child: Stack(
-          children: [
-            Container(
-              margin: const EdgeInsets.symmetric(
-                horizontal: 20,
-              ),
-              width: getsize(context).width * 0.9,
-              height: getsize(context).height * 0.2,
-              decoration: BoxDecoration(
-                color: tertiaryDark,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: MealRowWidget(
-                  imageUrl: "assets/meal1.png",
-                  mealName: " وجبه العرجيعة",
-                  kitchenName: " جيميرا",
-                  price: 20),
+      body: Stack(
+        children: [
+          Container(
+            margin: const EdgeInsets.symmetric(
+              horizontal: 20,
             ),
-            Positioned(
-                bottom: -20,
-                left: 0,
-                right: 0,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 120),
-                  child: AddToCartButton(text: "text", onPressed: () {}),
-                ))
-          ],
-        ),
+            width: getsize(context).width * 0.9,
+            height: getsize(context).height * 0.2,
+            decoration: BoxDecoration(
+              color: tertiaryDark,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: MealRowWidget(
+                imageUrl: "assets/meal1.png",
+                mealName: " وجبه العرجيعة",
+                kitchenName: " جيميرا",
+                price: 20),
+          ),
+          Positioned(
+              bottom: -20,
+              left: 0,
+              right: 0,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 120),
+                child: AddToCartButton(text: "text", onPressed: () {}),
+              ))
+        ],
       ),
     );
   }

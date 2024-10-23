@@ -1,19 +1,20 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
+import 'package:kojina_project/model/meal_model.dart';
+import 'package:kojina_project/provider/favorite_provider.dart';
+import 'package:provider/provider.dart';
 
 class CustomCard extends StatefulWidget {
   final String mealName;
   final double price;
-  final String imageUrl;
+  final String imageUrl ;
   final String kitchenName;
   final String rating;
   final int? discount;
   final String? description;
   final Widget? mealpage;
   final Widget? kitchenpage;
+  final Meal meal; // Add itemId to constructor for unique identification
 
   const CustomCard({
     super.key,
@@ -22,6 +23,7 @@ class CustomCard extends StatefulWidget {
     required this.rating,
     required this.price,
     required this.mealName,
+    required this.meal,
     this.discount,
     this.description,
     this.mealpage,
@@ -33,9 +35,9 @@ class CustomCard extends StatefulWidget {
 }
 
 class _CustomCardState extends State<CustomCard> {
-  bool isSlected = false;
   @override
   Widget build(BuildContext context) {
+    final favoriteProvider = Provider.of<FavoriteProvider>(context);
     return Container(
       width: getsize(context).width * 0.6,
       height: getsize(context).height * 0.7,
@@ -82,58 +84,52 @@ class _CustomCardState extends State<CustomCard> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isSlected = !isSlected;
-                      });
-                    },
-                    child: Positioned(
-                      right: 10,
-                      top: 10,
-                      child: Container(
-                        padding: const EdgeInsets.all(5),
-                        child: isSlected
-                            ? const Icon(
-                                Icons.favorite,
-                                color: mainColor,
-                                size: 50,
-                              )
-                            : const Icon(
-                                Icons.favorite_border,
-                                color: mainColor,
-                                size: 50,
-                              ),
+                  // Heart Icon Positioned
+                  Positioned(
+                    right: 10,
+                    top: 10,
+                    child: GestureDetector(
+                      onTap: () {
+                        favoriteProvider.toggleFavorite(widget.meal);
+                      },
+                      child: Icon(
+                        favoriteProvider.isFavorite(widget.meal)
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        color: favoriteProvider.isFavorite(widget.meal)
+                            ? Colors.red
+                            : Colors.grey,
                       ),
                     ),
                   ),
-                  Positioned(
+                  // Discount badge if applicable
+                  if (widget.discount != null)
+                    Positioned(
                       left: 10,
                       top: 10,
-                      child: widget.discount != null
-                          ? Container(
-                              padding: const EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.circular(100),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text(
-                                    "تخفيض",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 10),
-                                  ),
-                                  Text(
-                                    "${widget.discount}%",
-                                    style: const TextStyle(
-                                        color: Colors.white, fontSize: 14),
-                                  )
-                                ],
-                              ),
-                            )
-                          : const SizedBox()),
+                      child: Container(
+                        padding: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              "تخفيض",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 10),
+                            ),
+                            Text(
+                              "${widget.discount}%",
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 14),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ),

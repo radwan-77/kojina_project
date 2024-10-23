@@ -5,7 +5,7 @@ import 'package:kojina_project/helper/function_helper.dart';
 
 class CustomeSearchBar extends StatelessWidget {
   final TextEditingController controller;
-  final String hint; 
+  final String hint;
   final String? label;
   final Widget? prefix;
   final Widget? suffix;
@@ -27,6 +27,7 @@ class CustomeSearchBar extends StatelessWidget {
         controller: controller,
         decoration: InputDecoration(
           hintText: hint,
+          hintStyle: semiBold15,
           labelText: label,
           prefixIcon: prefix,
           suffixIcon: suffix,

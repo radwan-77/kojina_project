@@ -16,7 +16,7 @@ class IngradiantsRow extends StatefulWidget {
 }
 
 class _IngradiantsRowState extends State<IngradiantsRow> {
-  bool isChecked = false;
+  bool isChecked = true;
   @override
   Widget build(BuildContext context) {
     return Padding(

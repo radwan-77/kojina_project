@@ -1,48 +1,163 @@
 import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+class Api {
+  Future<Response> getRequest(String url) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
 
+    String? token = prefs.getString("token");
 
+    final response = await http.get(Uri.parse(url), headers: {
+      "Accept": 'application/json',
+      "content-type": "application/json",
+      "Authorization": "Bearer $token"
+    });
 
-// copilted code
-class ApiService {
-  final String baseUrl;
-
-  ApiService({required this.baseUrl});
-
-  Future<http.Response> getRequest(String endpoint) async {
-    final response = await http.get(Uri.parse('$baseUrl$endpoint'));
-    return _handleResponse(response);
+    if (kDebugMode) {
+      print("GET URL : $url");
+      print("GET STATUS CODE : ${response.statusCode}");
+      print("GET RESPONSE : ${response.body}");
+    }
+    if (response.statusCode == 401) {
+      await refreshToken().then((refreshed) {
+        if (refreshed) {
+          getRequest(
+            url,
+          );
+        }
+      });
+    }
+    return response;
   }
 
-  Future<http.Response> postRequest(String endpoint, Map<String, dynamic> data) async {
+  Future<Response> postRequest(String url, Map body) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    String? token = prefs.getString("token");
+
     final response = await http.post(
-      Uri.parse('$baseUrl$endpoint'),
-      headers: {'Content-Type': 'application/json'},
-      body: jsonEncode(data),
-    );
-    return _handleResponse(response);
+        Uri.parse(
+          url,
+        ),
+        body: jsonEncode(body),
+        headers: {
+          "Accept": 'application/json',
+          "content-type": "application/json",
+          "Authorization": "Bearer $token"
+        });
+    if (kDebugMode) {
+      print("POST URL : $url");
+      print("POST BODY : ${body}");
+      print("POST STATUS CODE : ${response.statusCode}");
+      print("POST RESPONSE : ${response.body}");
+    }
+    if (response.statusCode == 401) {
+      await refreshToken().then((refreshed) {
+        if (refreshed) {
+          postRequest(url, body);
+        }
+      });
+    }
+    return response;
   }
 
-  Future<http.Response> putRequest(String endpoint, Map<String, dynamic> data) async {
+  Future<Response> putRequest(String url, Map body) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    String? token = prefs.getString("token");
     final response = await http.put(
-      Uri.parse('$baseUrl$endpoint'),
-      headers: {'Content-Type': 'application/json'},
-      body: jsonEncode(data),
-    );
-    return _handleResponse(response);
+        Uri.parse(
+          url,
+        ),
+        body: jsonEncode(body),
+        headers: {
+          "Accept": 'application/json',
+          "content-type": "application/json",
+          "Authorization": "Bearer $token"
+        });
+    if (kDebugMode) {
+      print("PUT URL : $url");
+      print("PUT BODY : ${body}");
+      print("PUT STATUS CODE : ${response.statusCode}");
+      print("PUT RESPONSE : ${response.body}");
+    }
+
+    if (response.statusCode == 401) {
+      await refreshToken().then((refreshed) {
+        if (refreshed) {
+          putRequest(url, body);
+        }
+      });
+    }
+    return response;
   }
 
-  Future<http.Response> deleteRequest(String endpoint) async {
-    final response = await http.delete(Uri.parse('$baseUrl$endpoint'));
-    return _handleResponse(response);
+  Future<Response> deleteRequest(String url, Map body) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    String? token = prefs.getString("token");
+    final response = await http.delete(
+        Uri.parse(
+          url,
+        ),
+        body: jsonEncode(body),
+        headers: {
+          "Accept": 'application/json',
+          "content-type": "application/json",
+          "Authorization": "Bearer $token"
+        });
+    if (kDebugMode) {
+      print("DELETE URL : $url");
+      print("DELETE BODY : ${body}");
+      print("DELETE STATUS CODE : ${response.statusCode}");
+      print("DELETE RESPONSE : ${response.body}");
+    }
+
+    if (response.statusCode == 401) {
+      await refreshToken().then((refreshed) {
+        if (refreshed) {
+          deleteRequest(url, body);
+        }
+      });
+    }
+    return response;
   }
 
-  http.Response _handleResponse(http.Response response) {
-    if (response.statusCode >= 200 && response.statusCode < 300) {
-      return response;
+  Future<bool> refreshToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    String? oldToken = prefs.getString("token");
+
+    print("REFRESH OLDTOKEN : ${oldToken}");
+
+    final response = await http
+        .post(Uri.parse("https://lati.kudo.ly/api/refresh"), headers: {
+      "Accept": 'application/json',
+      "content-type": "application/json",
+      "Authorization": "Bearer $oldToken"
+    });
+
+    if (response.statusCode == 200) {
+      var decodedToken = json.decode(response.body)['access_token'];
+      prefs.setString("token", decodedToken);
+      if (kDebugMode) {
+        print("REFRESH STATUS CODE : ${response.statusCode}");
+        print("REFRESH RESPONSE : ${response.body}");
+      }
+      return true;
     } else {
-      throw Exception('Failed to load data: ${response.statusCode}');
+      if (kDebugMode) {
+        print("REFRESH STATUS CODE : ${response.statusCode}");
+        print("REFRESH RESPONSE : ${response.body}");
+      }
+      return false;
     }
   }
+
+  upload(File file, String url) {}
 }

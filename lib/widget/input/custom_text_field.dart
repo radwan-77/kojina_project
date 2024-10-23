@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 
@@ -11,9 +10,11 @@ class CustomTextField extends StatefulWidget {
   final String? label;
   final Widget? prefix;
   final Widget? suffix;
+  final Widget? forgetscreen;
   final bool forgetPassword;
   final bool isPassword;
   final bool eyevisible;
+  final bool obscuretext;
 
   const CustomTextField(
       {super.key,
@@ -25,7 +26,8 @@ class CustomTextField extends StatefulWidget {
       this.label,
       this.forgetPassword = false,
       this.isPassword = false,
-      this.eyevisible = false});
+      this.eyevisible = false,
+      this.obscuretext = false, this.forgetscreen});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -41,6 +43,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           TextFormField(
             controller: widget.controller,
             validator: widget.validator,
+            obscureText: widget.obscuretext,
             decoration: InputDecoration(
               hintText: widget.hint,
               labelText: widget.label,
@@ -64,7 +67,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 24),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => widget.forgetscreen!));
+                  },
                   child: Text("نسيت كلمة المرور؟",
                       style: TextStyle(
                           color: mainColor,

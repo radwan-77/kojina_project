@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/screen/auth-screen/login_screen.dart';
+import 'package:kojina_project/screen/auth-screen/otp_screen.dart';
 import 'package:kojina_project/widget/clickables/forgetpasswordbutton.dart';
 import 'package:kojina_project/widget/clickables/mainbutton.dart';
 import 'package:kojina_project/widget/input/custom_text_field.dart';
@@ -84,8 +85,17 @@ class _SingUpScreenState extends State<SingUpScreen> {
                       const CustomLabel(text: "كلمة المرور"),
                       CustomTextField(
                         controller: passwordController,
-                        validator: (validator) {},
-                        hint: "********",
+                        validator: (validator) {
+                          if (validator!.isEmpty) {
+                            return "هذا الحقل مطلوب";
+                          }
+                          if (validator.length < 6) {
+                            return "كلمة المرور يجب ان تكون 6 احرف على الاقل";
+                          }
+                          return null;
+                        },
+                        obscuretext: isPasswordVisible,
+                        hint: " كلمة المرور",
                         forgetPassword: true,
                         prefix: IconButton(
                           icon: Icon(
@@ -100,6 +110,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                           },
                         ),
                         isPassword: !isPasswordVisible,
+                        forgetscreen: OtpScreen(),
                       ),
                     ],
                   ),

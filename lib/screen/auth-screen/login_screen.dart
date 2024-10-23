@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kojina_project/generated/l10n.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/screen/auth-screen/singup_screen.dart';
-import 'package:kojina_project/screen/main-screen/home_screen.dart';
+import 'package:kojina_project/screen/location-screen/location_1.dart';
 import 'package:kojina_project/widget/clickables/forgetpasswordbutton.dart';
 import 'package:kojina_project/widget/clickables/mainbutton.dart';
 import 'package:kojina_project/widget/input/custom_text_field.dart';
@@ -51,6 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (validator.length < 11) {
                             return "رقم الهاتف يجب ان يكون 11 رقم";
                           }
+                          return null;
                         },
                         hint: "218+",
                         prefix: const Icon(Icons.phone),
@@ -58,8 +59,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       const CustomLabel(text: "كلمة المرور"),
                       CustomTextField(
                         controller: passwordController,
-                        validator: (validator) {},
-                        hint: "********",
+                        validator: (validator) {
+                          if (validator!.isEmpty) {
+                            return "هذا الحقل مطلوب";
+                          }
+                          if (validator.length < 6) {
+                            return "كلمة المرور يجب ان تكون 6 احرف على الاقل";
+                          }
+                          return null;
+                        },
+                        obscuretext: isPasswordVisible,
+                        hint: " كلمة المرور",
                         forgetPassword: true,
                         prefix: IconButton(
                           icon: Icon(
@@ -78,10 +88,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
+
                 MainButton(
                     text: "تسجيل الدخول",
                     onPressed: () {},
-                    nextpage: HomeScreen()),
+                    nextpage: LocationScreen1()),
                 const SizedBox(
                   height: 8,
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/screen/main-screen/main_screen.dart';
 import 'package:kojina_project/widget/clickables/mainbutton.dart';
@@ -21,52 +22,55 @@ class _LocationScreen2State extends State<LocationScreen2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: getsize(context).height * 0.2,
-            ),
-            Image.asset(
-              "assets/chat.png",
-              width: getsize(context).width * 0.5,
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            CustomTextField(
-                controller: locationcontroller,
-                validator: (validator) {
-
-                },
-                hint: "langtoit and latutit"),
-            SizedBox(
-              height: 20,
-            ),
-            CustomTextField(
-                controller: namecontroller,
-                validator: (validator) {
-
-                },
-                hint: "langtoit and latutit"),
-            SizedBox(
-              height: 20,
-            ),
-            CustomTextField(
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: getsize(context).height * 0.18,
+              ),
+              Image.asset(
+                "assets/location.png",
+                width: getsize(context).width * 0.5,
+                // opacity: AlwaysStoppedAnimation(0.8),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text("يرجى تحديد الموقع الحالي", style: bold20),
+              SizedBox(
+                height: 20,
+              ),
+              CustomTextField(
+                  controller: locationcontroller,
+                  validator: (validator) {},
+                  hint: "الموفع الحالي"),
+              SizedBox(
+                height: 20,
+              ),
+              CustomTextField(
+                  controller: namecontroller,
+                  validator: (validator) {},
+                  hint: " اسم الموقع"),
+              SizedBox(
+                height: 20,
+              ),
+              CustomTextField(
                 controller: descrptioncontrollrt,
-                validator: (validator) {
-                  
-                },
-                hint: "langtoit and latutit"),
-            SizedBox(
-              height: 20,
-            ),
-            MainButton(
-              nextpage: MainScreen(),
-              text: "تاكيد الموقع",
-              onPressed: () {},
-            )
-          ],
+                validator: (validator) {},
+                hint: "الوصف(اختياري)",
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              MainButton(
+                nextpage: MainScreen(),
+                text: "تاكيد الموقع",
+                onPressed: () {},
+              )
+            ],
+          ),
         ),
       ),
     );

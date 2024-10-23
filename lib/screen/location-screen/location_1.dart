@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -7,7 +9,9 @@ import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/screen/location-screen/location_2.dart';
 
 class LocationScreen1 extends StatefulWidget {
-  const LocationScreen1({super.key});
+   double? latiTude;
+   double? longiTude;
+   LocationScreen1({super.key, });
 
   @override
   State<LocationScreen1> createState() => _LocationScreen1State();
@@ -91,11 +95,14 @@ class _LocationScreen1State extends State<LocationScreen1> {
                         right: 5,
                         child: GestureDetector(
                           onTap: () {
+                            widget.latiTude=inpositon!.altitude;
+                            widget.longiTude=inpositon!.longitude;
                             _googleMapController.animateCamera(
                               CameraUpdate.newCameraPosition(CameraPosition(
-                                  target: LatLng(inpositon!.latitude,
-                                      inpositon!.longitude),
+                                  target: LatLng(inpositon!.latitude, 
+                                        inpositon!.longitude),
                                   zoom: 19)),
+
                             );
                           },
                           child: Container(

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kojina_project/helper/consts.dart';
+import 'package:kojina_project/screen/auth-screen/login_screen.dart';
+import 'package:kojina_project/widget/clickables/mainbutton.dart';
+import 'package:kojina_project/widget/input/custom_text_field.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {
   const ForgetPasswordScreen({super.key});
@@ -8,26 +12,43 @@ class ForgetPasswordScreen extends StatefulWidget {
 }
 
 class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
+  TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            'Forget Password Screen',
-            style: TextStyle(fontSize: 24),
-          ),
-          SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              // Add your onPressed code here!
-            },
-            child: Text('Reset Password'),
-          ),
-        ],
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Enter your new Password',
+              style: normal15,
+            ),
+            SizedBox(height: 20),
+            CustomTextField(
+              controller: controller,
+              validator: (v) {},
+              hint: "Email",
+              prefix: Icon(Icons.password),
+            ),
+            SizedBox(height: 20),
+            CustomTextField(
+              controller: controller,
+              validator: (v) {},
+              hint: "Email",
+              prefix: Icon(Icons.password),
+            ),
+            SizedBox(height: 20),
+            MainButton(
+              text: "Confirm Password",
+              onPressed: () {},
+              nextpage: LoginScreen(),
+            )
+          ],
+        ),
       ),
-
     );
   }
 }
