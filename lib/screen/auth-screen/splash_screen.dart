@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kojina_project/main.dart';
 import 'package:kojina_project/screen/auth-screen/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -13,8 +14,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-          context, CupertinoPageRoute(builder: (context) => const LoginScreen()));
+      Navigator.pushReplacement(context,
+          CupertinoPageRoute(builder: (context) => const ScreenRouter()));
     });
     super.initState();
   }

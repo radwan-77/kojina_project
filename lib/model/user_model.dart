@@ -1,31 +1,33 @@
+import 'dart:convert';
+
 class UserModel {
-  final String id;
-  final String name;
-  final String email;
-  final String avatarUrl;
+    String fullName;
+    String phoneNumber;
+    String email;
+    String password;
 
-  UserModel({
-    required this.id,
-    required this.name,
-    required this.email,
-    required this.avatarUrl,
-  });
+    UserModel({
+        required this.fullName,
+        required this.phoneNumber,
+        required this.email,
+        required this.password,
+    });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
-      id: json['id'],
-      name: json['name'],
-      email: json['email'],
-      avatarUrl: json['avatarUrl'],
+    factory UserModel.fromRawJson(String str) => UserModel.fromJson(json.decode(str));
+
+    String toRawJson() => json.encode(toJson());
+
+    factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+        fullName: json["full_name"],
+        phoneNumber: json["phone_number"],
+        email: json["email"],
+        password: json["password"],
     );
-  }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'email': email,
-      'avatarUrl': avatarUrl,
+    Map<String, dynamic> toJson() => {
+        "full_name": fullName,
+        "phone_number": phoneNumber,
+        "email": email,
+        "password": password,
     };
-  }
 }

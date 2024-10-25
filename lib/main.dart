@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kojina_project/generated/l10n.dart';
+import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/provider/auth_provider.dart';
 import 'package:kojina_project/provider/base_provider.dart';
 import 'package:kojina_project/provider/favorite_provider.dart';
 import 'package:kojina_project/provider/meals_provider.dart';
 import 'package:kojina_project/screen/auth-screen/login_screen.dart';
 import 'package:kojina_project/screen/auth-screen/splash_screen.dart';
+import 'package:kojina_project/screen/cart-screen/empty_cart_screen.dart';
+import 'package:kojina_project/screen/cart-screen/my_cart.dart';
 
 import 'package:kojina_project/screen/main-screen/main_screen.dart';
 
@@ -57,46 +60,41 @@ class _MyAppState extends State<MyApp> {
         ],
         supportedLocales: S.delegate.supportedLocales,
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: MycartScreen( 
+          cartMeals: [],
+        ),
+        // !splash screen ? splash screen : countine your shit 
       ),
     );
   }
 }
 
+// when enable auth  uncomment this code
 
+class ScreenRouter extends StatefulWidget {
+  const ScreenRouter({super.key});
 
+  @override
+  State<ScreenRouter> createState() => _ScreenRouterState();
+}
 
-// when enable auth  uncomment this code 
+class _ScreenRouterState extends State<ScreenRouter> {
+  @override
+  void initState() {
+    Provider.of<AuthenticationProvider>(context, listen: false)
+        .initializeAuthProvider();
+    super.initState();
+  }
 
-
-
-
-
-
-// class ScreenRouter extends StatefulWidget {
-//   const ScreenRouter({super.key});
-
-//   @override
-//   State<ScreenRouter> createState() => _ScreenRouterState();
-// }
-
-// class _ScreenRouterState extends State<ScreenRouter> {
-//   @override
-//   void initState() {
-//     Provider.of<AuthenticationProvider>(context, listen: false)
-//         .initializeAuthProvider();
-//     super.initState();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Consumer<AuthenticationProvider>(
-//         builder: (context, authenticationConsumer, child) {
-//       return AnimatedSwitcher(
-//         duration: animationDuration,
-//         child:
-//             authenticationConsumer.authenticated ? HomeScreen() : LoginScreen(),
-//       );
-//     });
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<AuthenticationProvider>(
+        builder: (context, authenticationConsumer, child) {
+      return AnimatedSwitcher(
+        duration: animationDuration,
+        child:
+            authenticationConsumer.authenticated ? MainScreen() : LoginScreen(),
+      );
+    });
+  }
+}

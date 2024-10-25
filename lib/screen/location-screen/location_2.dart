@@ -65,9 +65,15 @@ class _LocationScreen2State extends State<LocationScreen2> {
                 height: 20,
               ),
               MainButton(
-                nextpage: MainScreen(),
                 text: "تاكيد الموقع",
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MainScreen(),
+                    ),
+                  );
+                },
               )
             ],
           ),

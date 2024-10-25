@@ -43,8 +43,14 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
             SizedBox(height: 20),
             MainButton(
               text: "Confirm Password",
-              onPressed: () {},
-              nextpage: LoginScreen(),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginScreen(),
+                  ),
+                );
+              },
             )
           ],
         ),

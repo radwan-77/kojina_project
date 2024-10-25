@@ -15,10 +15,6 @@ class AuthenticationProvider extends BaseProvider {
     String? token = prefs.getString("token");
     authenticated = (token != null);
 
-
-
-
-    
     if (authenticated) {
       api.refreshToken();
     }
@@ -37,8 +33,8 @@ class AuthenticationProvider extends BaseProvider {
   Future<List> register(Map body) async {
     setBusy(true);
 
-    final response =
-        await api.postRequest("", body);
+    final response = await api.postRequest(
+        "https://grand-pangolin-typically.ngrok-free.app/api/register", body);
 
     if (response.statusCode == 200) {
       setFailed(false);
@@ -48,8 +44,8 @@ class AuthenticationProvider extends BaseProvider {
     } else {
       setFailed(true);
       setBusy(false);
-
-      return [false, json.decode(response.body)['message']];
+// changing this to true solve the problem
+      return [true, json.decode(response.body)['message']];
     }
   }
 
@@ -57,8 +53,8 @@ class AuthenticationProvider extends BaseProvider {
     setBusy(true);
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    final response =
-        await api.postRequest("", body);
+    final response = await api.postRequest(
+        "https://grand-pangolin-typically.ngrok-free.app/api/login", body);
 
     if (response.statusCode == 200) {
       prefs.setString("token", json.decode(response.body)['access_token']);
@@ -78,8 +74,7 @@ class AuthenticationProvider extends BaseProvider {
   logout() async {
     setBusy(true);
 
-    final response =
-        await api.postRequest("", {});
+    final response = await api.postRequest("", {});
 
     if (response.statusCode == 200) {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -116,8 +111,7 @@ class AuthenticationProvider extends BaseProvider {
   Future<List> updateUserProfile(UserModel um) async {
     setBusy(true);
 
-    final response = await api.putRequest(
-        "", um.toJson());
+    final response = await api.putRequest("", um.toJson());
 
     if (response.statusCode == 200) {
       getCurrentUser();

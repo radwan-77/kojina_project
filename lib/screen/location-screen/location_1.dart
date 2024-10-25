@@ -9,9 +9,11 @@ import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/screen/location-screen/location_2.dart';
 
 class LocationScreen1 extends StatefulWidget {
-   double? latiTude;
-   double? longiTude;
-   LocationScreen1({super.key, });
+  double? latiTude;
+  double? longiTude;
+  LocationScreen1({
+    super.key,
+  });
 
   @override
   State<LocationScreen1> createState() => _LocationScreen1State();
@@ -95,14 +97,13 @@ class _LocationScreen1State extends State<LocationScreen1> {
                         right: 5,
                         child: GestureDetector(
                           onTap: () {
-                            widget.latiTude=inpositon!.altitude;
-                            widget.longiTude=inpositon!.longitude;
+                            widget.latiTude = inpositon!.altitude;
+                            widget.longiTude = inpositon!.longitude;
                             _googleMapController.animateCamera(
                               CameraUpdate.newCameraPosition(CameraPosition(
-                                  target: LatLng(inpositon!.latitude, 
-                                        inpositon!.longitude),
+                                  target: LatLng(inpositon!.latitude,
+                                      inpositon!.longitude),
                                   zoom: 19)),
-
                             );
                           },
                           child: Container(
@@ -139,12 +140,12 @@ class _LocationScreen1State extends State<LocationScreen1> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: mainColor,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                   child: Text(
                     "تاكيد العنوان",
-                    style: bold20,
+                    style: normal15,
                   ),
                   onPressed: () {
                     Navigator.push(

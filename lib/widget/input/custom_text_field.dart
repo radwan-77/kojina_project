@@ -27,7 +27,8 @@ class CustomTextField extends StatefulWidget {
       this.forgetPassword = false,
       this.isPassword = false,
       this.eyevisible = false,
-      this.obscuretext = false, this.forgetscreen});
+      this.obscuretext = false,
+      this.forgetscreen});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -68,10 +69,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 padding: const EdgeInsets.only(bottom: 24),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
+                    if (widget.forgetscreen != null) {
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => widget.forgetscreen!));
+                            builder: (context) => widget.forgetscreen!),
+                      );
+                    }
                   },
                   child: Text("نسيت كلمة المرور؟",
                       style: TextStyle(

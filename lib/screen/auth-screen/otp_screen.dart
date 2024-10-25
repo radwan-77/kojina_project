@@ -33,7 +33,15 @@ class _OtpScreenState extends State<OtpScreen> {
                 hint: "Email",
                 prefix: Icon(Icons.email)),
             SizedBox(height: 20),
-            MainButton(text: "send Email", onPressed: () {} , nextpage: ForgetPasswordScreen(),)
+            MainButton(text: "send Email", onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ForgetPasswordScreen(),
+                ),
+              );
+            } ,
+             )
           ],
         ),
       ),

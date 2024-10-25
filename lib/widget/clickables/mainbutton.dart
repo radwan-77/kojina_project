@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
@@ -9,12 +8,10 @@ class MainButton extends StatelessWidget {
   // final bool inProgress = false;
   final Color btnColor = mainColor;
   final Color txtColor = onPrimaryLight;
-  final Widget? nextpage;
   const MainButton({
     super.key,
     required this.text,
     required this.onPressed,
-    this.nextpage,
   });
 
   @override
@@ -30,14 +27,7 @@ class MainButton extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          if(nextpage !=null){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => nextpage!));}
-            else{
-              if(kDebugMode){
-                print("not pressed");
-              }
-            }
-          ;
+          onPressed();
         },
         child: Text(
           text,
