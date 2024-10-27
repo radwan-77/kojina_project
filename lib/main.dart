@@ -8,11 +8,9 @@ import 'package:kojina_project/provider/base_provider.dart';
 import 'package:kojina_project/provider/favorite_provider.dart';
 import 'package:kojina_project/provider/meals_provider.dart';
 import 'package:kojina_project/screen/auth-screen/login_screen.dart';
-import 'package:kojina_project/screen/auth-screen/splash_screen.dart';
-import 'package:kojina_project/screen/cart-screen/empty_cart_screen.dart';
-import 'package:kojina_project/screen/cart-screen/my_cart.dart';
 
 import 'package:kojina_project/screen/main-screen/main_screen.dart';
+import 'package:kojina_project/screen/order-flow/spiacial_order_screen.dart';
 
 import 'package:provider/provider.dart';
 
@@ -60,10 +58,8 @@ class _MyAppState extends State<MyApp> {
         ],
         supportedLocales: S.delegate.supportedLocales,
         debugShowCheckedModeBanner: false,
-        home: MycartScreen( 
-          cartMeals: [],
-        ),
-        // !splash screen ? splash screen : countine your shit 
+        home: SpiacialOrderScreen(),
+        // !splash screen ? splash screen : countine your shit
       ),
     );
   }

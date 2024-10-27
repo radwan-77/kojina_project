@@ -7,6 +7,7 @@ class ProfileTile extends StatelessWidget {
   final IconData icon;
   final bool isArrow;
   final String? subtitle;
+  final Function onTap;
 
   const ProfileTile({
     super.key,
@@ -14,6 +15,7 @@ class ProfileTile extends StatelessWidget {
     required this.title,
     required this.icon,
     this.subtitle,
+    required this.onTap,
   });
 
   @override
@@ -32,6 +34,9 @@ class ProfileTile extends StatelessWidget {
           leading: Icon(icon),
           horizontalTitleGap: 5,
           trailing: isArrow ? const Icon(Icons.arrow_forward_ios) : null,
+          onLongPress: () {
+            onTap();
+          },
         ),
       ),
     );

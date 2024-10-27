@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/provider/meals_provider.dart';
 import 'package:kojina_project/screen/main-screen/meal_Screen.dart';
+import 'package:kojina_project/screen/order-flow/spiacial_order_screen.dart';
 import 'package:kojina_project/widget/card/arji3a.dart';
-import 'package:kojina_project/widget/card/kitchen_card.dart';
 import 'package:kojina_project/widget/card/kitchen_card_mini.dart';
 import 'package:kojina_project/widget/clickables/catagorybutton.dart';
 import 'package:kojina_project/widget/clickables/mainbutton.dart';
@@ -20,23 +20,6 @@ class KitchenScreen extends StatefulWidget {
 
 class _KitchenScreenState extends State<KitchenScreen> {
   int selectedCategory = 0;
-  List<Map<String, dynamic>> meals = [
-    {
-      'mealName': 'وجبة العرجيعة',
-      'imageUrl': 'assets/meal1.png',
-      'kitchenName': 'مطبخ جميرا',
-      'rating': '4',
-      'price': 35,
-    },
-    {
-      'mealName': 'وجبة الكبسة',
-      'imageUrl': 'assets/meal1.png',
-      'kitchenName': 'مطبخ الرياض',
-      'rating': '5',
-      'price': 40,
-    },
-    // Add more meal items as necessary...
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +55,15 @@ class _KitchenScreenState extends State<KitchenScreen> {
                         ],
                       ),
                       SizedBox(height: 20),
-                      MainButton(text: "اطلب الان", onPressed: () {}),
+                      MainButton(
+                          text: "اطلب الان",
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        SpiacialOrderScreen()));
+                          }),
                     ],
                   ),
 
@@ -80,11 +71,41 @@ class _KitchenScreenState extends State<KitchenScreen> {
                   SingleChildScrollView(
                     child: Column(
                       children: [
-                        CustomLabel(text: "حلو "),
+                        const CustomLabel(
+                          text: "الأصناف ",
+                          Sizefont: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 14),
+                          child: SizedBox(
+                            height: 50,
+                            width: getsize(context).width,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 5,
+                              itemBuilder: (context, index) {
+                                return CategoryButton(
+                                  text: "الكل",
+                                  onPressed: () {
+                                    setState(() {
+                                      selectedCategory = index;
+                                    });
+                                  },
+                                  isSlected: index == selectedCategory,
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+
+                        // category 1
+                        const CustomLabel(
+                          text: "صنف 1 ",
+                        ),
                         SizedBox(
                           height: getsize(context).height * 0.30,
                           child: ListView.builder(
-                            scrollDirection: Axis.vertical,
+                            scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
                               return CustomCard(
                                 meal: mealsProvider
@@ -105,7 +126,38 @@ class _KitchenScreenState extends State<KitchenScreen> {
                             itemCount: mealsProvider.meals.length,
                           ),
                         ),
-                        CustomLabel(text: "مالح "),
+                        // category 2
+                        const CustomLabel(
+                          text: "صنف 2 ",
+                        ),
+                        SizedBox(
+                          height: getsize(context).height * 0.30,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return CustomCard(
+                                meal: mealsProvider
+                                    .meals[index], // Add itemId here
+                                mealName: mealsProvider.meals[index].mealName,
+                                imageUrl: mealsProvider.meals[index].imageUrl,
+                                kitchenName:
+                                    mealsProvider.meals[index].kitchenName,
+                                rating: mealsProvider.meals[index].rating,
+                                price: mealsProvider.meals[index].price,
+                                // discount: mealsProvider.meals[index]
+                                //     .discount, // Example discount, adjust as needed
+                                mealpage: MealScreen(), // Pass meal screen
+                                kitchenpage:
+                                    KitchenScreen(), // Pass kitchen screen
+                              );
+                            },
+                            itemCount: mealsProvider.meals.length,
+                          ),
+                        ),
+                        // cataegory 3
+                        const CustomLabel(
+                          text: "صنف 3 ",
+                        ),
                         SizedBox(
                           height: getsize(context).height * 0.30,
                           child: ListView.builder(

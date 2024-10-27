@@ -7,6 +7,7 @@ const Color onPrimaryDark = Color(0xFFffffff);
 const Color tertiaryDark = Color(0xFF5a5a5a);
 const Color tertiaryLight = Color(0xFFc0c0c0);
 const Color errorColor = Color(0xFFE70013);
+const Color cartColor = Color(0xFFf3f3f3);
 
 ///////////animation duration//////////////
 
