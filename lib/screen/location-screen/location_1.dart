@@ -93,41 +93,42 @@ class _LocationScreen1State extends State<LocationScreen1> {
 
                     ////////////////////////////  Button  ////////////////////////////
                     Positioned(
-                        bottom: 10,
-                        right: 5,
-                        child: GestureDetector(
-                          onTap: () {
-                            widget.latiTude = inpositon!.altitude;
-                            widget.longiTude = inpositon!.longitude;
-                            _googleMapController.animateCamera(
-                              CameraUpdate.newCameraPosition(CameraPosition(
-                                  target: LatLng(inpositon!.latitude,
-                                      inpositon!.longitude),
-                                  zoom: 19)),
-                            );
-                          },
-                          child: Container(
-                            width: 180,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              color: mainColor,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.location_on,
-                                  size: 30,
-                                ),
-                                Text(
-                                  "الموقع الحالي",
-                                  style: bold16,
-                                ),
-                              ],
-                            ),
+                      bottom: 10,
+                      right: 5,
+                      child: GestureDetector(
+                        onTap: () {
+                          widget.latiTude = inpositon!.altitude;
+                          widget.longiTude = inpositon!.longitude;
+                          _googleMapController.animateCamera(
+                            CameraUpdate.newCameraPosition(CameraPosition(
+                                target: LatLng(
+                                    inpositon!.latitude, inpositon!.longitude),
+                                zoom: 19)),
+                          );
+                        },
+                        child: Container(
+                          width: 180,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: mainColor,
+                            borderRadius: BorderRadius.circular(30),
                           ),
-                        ))
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.location_on,
+                                size: 30,
+                              ),
+                              Text(
+                                "الموقع الحالي",
+                                style: bold16,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
           Container(

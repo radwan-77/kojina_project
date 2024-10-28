@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 
 class kitchencardmini extends StatelessWidget {

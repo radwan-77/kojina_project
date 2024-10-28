@@ -70,7 +70,8 @@ class AuthenticationProvider extends BaseProvider {
   logout() async {
     setBusy(true);
 
-    final response = await api.postRequest("", {});
+    final response = await api.postRequest(
+        "https://grand-pangolin-typically.ngrok-free.app/api/logout", {});
 
     if (response.statusCode == 200) {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -90,7 +91,8 @@ class AuthenticationProvider extends BaseProvider {
   Future<UserModel?> getCurrentUser() async {
     setBusy(true);
 
-    final response = await api.getRequest("");
+    final response = await api.getRequest(
+        "https://grand-pangolin-typically.ngrok-free.app/api/refersh");
 
     if (response.statusCode == 200) {
       currentUser = UserModel.fromJson(json.decode(response.body)['data']);

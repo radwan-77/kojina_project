@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 class CustomCard extends StatefulWidget {
   final String mealName;
   final double price;
-  final String imageUrl ;
+  final String imageUrl;
   final String kitchenName;
   final String rating;
   final int? discount;
@@ -99,6 +99,7 @@ class _CustomCardState extends State<CustomCard> {
                         color: favoriteProvider.isFavorite(widget.meal)
                             ? Colors.red
                             : Colors.grey,
+                        size: 35,
                       ),
                     ),
                   ),
