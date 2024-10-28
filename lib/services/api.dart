@@ -135,12 +135,14 @@ class Api {
 
     print("REFRESH OLDTOKEN : ${oldToken}");
 
-    final response = await http
-        .post(Uri.parse("https://lati.kudo.ly/api/refresh"), headers: {
-      "Accept": 'application/json',
-      "content-type": "application/json",
-      "Authorization": "Bearer $oldToken"
-    });
+    final response = await http.post(
+        Uri.parse(
+            "https://grand-pangolin-typically.ngrok-free.app/api/refresh"),
+        headers: {
+          "Accept": 'application/json',
+          "content-type": "application/json",
+          "Authorization": "Bearer $oldToken"
+        });
 
     if (response.statusCode == 200) {
       var decodedToken = json.decode(response.body)['access_token'];

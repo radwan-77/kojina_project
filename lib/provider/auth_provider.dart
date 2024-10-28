@@ -90,36 +90,34 @@ class AuthenticationProvider extends BaseProvider {
     }
   }
 
-  refreshToken() async {}
+//   Future<UserModel?> getCurrentUser() async {
+//     setBusy(true);
 
-  Future<UserModel?> getCurrentUser() async {
-    setBusy(true);
+//     final response = await api.getRequest(
+//         "https://grand-pangolin-typically.ngrok-free.app/api/refersh");
 
-    final response = await api.getRequest(
-        "https://grand-pangolin-typically.ngrok-free.app/api/refersh");
+//     if (response.statusCode == 200) {
+//       currentUser = UserModel.fromJson(json.decode(response.body)['data']);
+//       setBusy(false);
+//       setFailed(false);
+//       return currentUser;
+//     } else {
+//       setBusy(false);
+//       setFailed(true);
+//       return null;
+//     }
+//   }
 
-    if (response.statusCode == 200) {
-      currentUser = UserModel.fromJson(json.decode(response.body)['data']);
-      setBusy(false);
-      setFailed(false);
-      return currentUser;
-    } else {
-      setBusy(false);
-      setFailed(true);
-      return null;
-    }
-  }
+//   Future<List> updateUserProfile(UserModel um) async {
+//     setBusy(true);
 
-  Future<List> updateUserProfile(UserModel um) async {
-    setBusy(true);
+//     final response = await api.putRequest("", um.toJson());
 
-    final response = await api.putRequest("", um.toJson());
-
-    if (response.statusCode == 200) {
-      getCurrentUser();
-      return [true, json.decode(response.body)['data']];
-    } else {
-      return [false, json.decode(response.body)['message']];
-    }
-  }
+//     if (response.statusCode == 200) {
+//       getCurrentUser();
+//       return [true, json.decode(response.body)['data']];
+//     } else {
+//       return [false, json.decode(response.body)['message']];
+//     }
+//   }
 }

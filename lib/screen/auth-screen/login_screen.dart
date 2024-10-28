@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kojina_project/generated/l10n.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/provider/auth_provider.dart';
+import 'package:kojina_project/screen/auth-screen/send_email.dart';
 import 'package:kojina_project/screen/auth-screen/singup_screen.dart';
 import 'package:kojina_project/screen/location-screen/location_1.dart';
 import 'package:kojina_project/widget/clickables/forgetpasswordbutton.dart';
@@ -89,6 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               },
                             ),
                             isPassword: !isPasswordVisible,
+                            forgetscreen: SendEmailScreen(),
                           ),
                         ],
                       ),

@@ -8,10 +8,9 @@ import 'package:kojina_project/provider/base_provider.dart';
 import 'package:kojina_project/provider/favorite_provider.dart';
 import 'package:kojina_project/provider/meals_provider.dart';
 import 'package:kojina_project/screen/auth-screen/login_screen.dart';
+import 'package:kojina_project/screen/auth-screen/splash_screen.dart';
 
 import 'package:kojina_project/screen/main-screen/main_screen.dart';
-import 'package:kojina_project/screen/order-flow/spiacial_order_screen.dart';
-
 import 'package:provider/provider.dart';
 
 void main() {
@@ -58,7 +57,7 @@ class _MyAppState extends State<MyApp> {
         ],
         supportedLocales: S.delegate.supportedLocales,
         debugShowCheckedModeBanner: false,
-        home: SpiacialOrderScreen(),
+        home: SplashScreen(),
         // !splash screen ? splash screen : countine your shit
       ),
     );

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/consts.dart';
+import 'package:kojina_project/screen/auth-screen/forget_password_screen.dart';
 import 'package:kojina_project/screen/auth-screen/login_screen.dart';
 import 'package:kojina_project/widget/clickables/mainbutton.dart';
 import 'package:kojina_project/widget/input/custom_text_field.dart';
 
-class ForgetPasswordScreen extends StatefulWidget {
-  const ForgetPasswordScreen({super.key});
+class SendEmailScreen extends StatefulWidget {
+  const SendEmailScreen({super.key});
 
   @override
-  State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
+  State<SendEmailScreen> createState() => _SendEmailScreenState();
 }
 
-class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
+class _SendEmailScreenState extends State<SendEmailScreen> {
   TextEditingController emailcontroller = TextEditingController();
 
   @override
@@ -23,21 +24,9 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'entter to reset password',
+              'Enter your email to send a reset password link',
               style: normal15,
             ),
-            SizedBox(height: 50),
-            CustomTextField(
-              controller: emailcontroller,
-              validator: (v) {
-                if (v!.isEmpty) {
-                  return "This field is required";
-                }
-                return null;
-              },
-              hint: "Password",
-              prefix: Icon(Icons.email),
-            ),            
             SizedBox(height: 20),
             CustomTextField(
               controller: emailcontroller,
@@ -47,22 +36,18 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 }
                 return null;
               },
-              hint: " Confirm Password",
+              hint: "Email",
               prefix: Icon(Icons.email),
-            ), 
-
-            SizedBox(height: 30),
-
-
-
+            ),            
+            SizedBox(height: 20),
             MainButton(
-              text: "Change Password",
+              text: "Confirm Password",
               onPressed: () {
-                // update the password
+                // send email to reset password
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => LoginScreen(),
+                    builder: (context) => ForgetPasswordScreen(),
                   ),
                 );
               },
