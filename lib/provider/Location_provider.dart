@@ -13,7 +13,6 @@ class LocationProvider extends BaseProvider {
     await Geolocator.checkPermission();
     await Geolocator.requestPermission();
 
-    setBusy(false);
     inpositon = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.low);
     _currentlocation = Marker(
@@ -23,7 +22,7 @@ class LocationProvider extends BaseProvider {
       position: LatLng(inpositon!.latitude, inpositon!.longitude),
     );
     setBusy(true);
-    // Set position
+    notifyListeners();
 
     if (kDebugMode) {
       print("LATLOC ${inpositon!.latitude} - LONGLOC ${inpositon!.longitude}");

@@ -3,7 +3,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
-import 'package:kojina_project/provider/locapption_provider.dart';
+import 'package:kojina_project/provider/Location_provider.dart';
 import 'package:kojina_project/screen/location-screen/location_2.dart';
 
 class LocationScreen1 extends StatefulWidget {
@@ -53,7 +53,8 @@ class _LocationScreen1State extends State<LocationScreen1> {
 
   @override
   void dispose() {
-    _googleMapController.dispose();
+    _googleMapController;
+    dispose();
     super.dispose();
   }
 
@@ -66,7 +67,6 @@ class _LocationScreen1State extends State<LocationScreen1> {
         backgroundColor: mainColor,
       ),
       body: Column(
-        mainAxisSize: MainAxisSize.max,
         children: [
           inpositon == null
               ? const Center(child: CircularProgressIndicator())
