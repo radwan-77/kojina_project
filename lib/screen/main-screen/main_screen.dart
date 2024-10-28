@@ -23,7 +23,11 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  bool isLocation = false;
+
   List<Widget> screens = [
+    
+
     HomeScreen(),
     const FavoriteScreen(),
     const OrderScreen(),

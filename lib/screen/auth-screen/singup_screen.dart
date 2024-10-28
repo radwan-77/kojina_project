@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/provider/auth_provider.dart';
 import 'package:kojina_project/screen/auth-screen/login_screen.dart';
-import 'package:kojina_project/screen/auth-screen/otp_screen.dart';
+import 'package:kojina_project/screen/auth-screen/send_email.dart';
 import 'package:kojina_project/screen/main-screen/main_screen.dart';
 import 'package:kojina_project/widget/clickables/forgetpasswordbutton.dart';
 import 'package:kojina_project/widget/clickables/mainbutton.dart';
@@ -118,7 +118,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                             },
                           ),
                           isPassword: !isPasswordVisible,
-                          forgetscreen: OtpScreen(),
+                          forgetscreen: SendEmailScreen(),
                         ),
                       ],
                     ),

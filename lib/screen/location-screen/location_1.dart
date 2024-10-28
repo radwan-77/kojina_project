@@ -1,11 +1,9 @@
-import 'dart:ffi';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
+import 'package:kojina_project/provider/locapption_provider.dart';
 import 'package:kojina_project/screen/location-screen/location_2.dart';
 
 class LocationScreen1 extends StatefulWidget {
@@ -25,32 +23,32 @@ class _LocationScreen1State extends State<LocationScreen1> {
   Marker? _currentlocation;
   bool btnPressed = true;
 
-  void getlocation() async {
-    await Geolocator.checkPermission();
-    await Geolocator.requestPermission();
+  // void getlocation() async {
+  //   await Geolocator.checkPermission();
+  //   await Geolocator.requestPermission();
 
-    inpositon = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.low);
-    setState(() {
-      _currentlocation = Marker(
-        markerId: const MarkerId('origin'),
-        infoWindow: const InfoWindow(title: 'Origin'),
-        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
-        position: LatLng(inpositon!.latitude, inpositon!.longitude),
+  //   inpositon = await Geolocator.getCurrentPosition(
+  //       desiredAccuracy: LocationAccuracy.low);
+  //   setState(() {
+  //     _currentlocation = Marker(
+  //       markerId: const MarkerId('origin'),
+  //       infoWindow: const InfoWindow(title: 'Origin'),
+  //       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+  //       position: LatLng(inpositon!.latitude, inpositon!.longitude),
 
-        // Set position
-      );
-    });
+  //       // Set position
+  //     );
+  //   });
 
-    if (kDebugMode) {
-      print("LATLOC ${inpositon!.latitude} - LONGLOC ${inpositon!.longitude}");
-    }
-  }
+  //   if (kDebugMode) {
+  //     print("LATLOC ${inpositon!.latitude} - LONGLOC ${inpositon!.longitude}");
+  //   }
+  // }
 
   @override
   void initState() {
     super.initState();
-    getlocation();
+    LocationProvider().getlocation();
   }
 
   @override
@@ -77,6 +75,7 @@ class _LocationScreen1State extends State<LocationScreen1> {
                     Container(
                       height: getsize(context).height * 0.8,
                       child: GoogleMap(
+                        // provider
                         initialCameraPosition: CameraPosition(
                             target: LatLng(
                                 inpositon!.latitude, inpositon!.longitude),
@@ -97,6 +96,7 @@ class _LocationScreen1State extends State<LocationScreen1> {
                       right: 5,
                       child: GestureDetector(
                         onTap: () {
+                          // provider
                           widget.latiTude = inpositon!.altitude;
                           widget.longiTude = inpositon!.longitude;
                           _googleMapController.animateCamera(
