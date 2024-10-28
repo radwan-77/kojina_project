@@ -21,11 +21,7 @@ class AuthenticationProvider extends BaseProvider {
     print("Bearer Token is : $token");
     print("Auth Status is : $authenticated");
 
-    // if (token == null) {
-    //   authenticated = false;
-    // } else {
-    //   authenticated = true;
-    // }
+
 
     setBusy(false);
   }

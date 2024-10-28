@@ -60,10 +60,8 @@ class _MyAppState extends State<MyApp> {
         ],
         supportedLocales: S.delegate.supportedLocales,
         debugShowCheckedModeBanner: false,
-        home: MycartScreen( 
-          cartMeals: [],
-        ),
-        // !splash screen ? splash screen : countine your shit 
+        home: SplashScreen(),
+        // !splash screen ? splash screen : countine your shit
       ),
     );
   }
