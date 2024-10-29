@@ -77,6 +77,7 @@ class _LocationScreen1State extends State<LocationScreen1> {
                         height: getsize(context).height * 0.8,
                         child: GoogleMap(
                           // provider
+                        
                           initialCameraPosition: CameraPosition(
                               target: LatLng(
                                   locationConsumrer.inpositon!.latitude,
@@ -92,6 +93,7 @@ class _LocationScreen1State extends State<LocationScreen1> {
                           },
 
                           // update location marker
+                          
 
                           onLongPress: (newlocation) {
                             locationConsumrer.googleMapController.animateCamera(

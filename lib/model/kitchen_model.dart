@@ -11,6 +11,7 @@ class KitchenModel {
     String openingTime;
     String closingTime;
     String rating;
+    
 
     KitchenModel({
         required this.kitchenName,
