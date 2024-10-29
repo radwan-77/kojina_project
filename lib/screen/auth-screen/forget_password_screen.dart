@@ -28,6 +28,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
             ),
             SizedBox(height: 50),
             CustomTextField(
+              onTap: () {},
               controller: emailcontroller,
               validator: (v) {
                 if (v!.isEmpty) {
@@ -40,6 +41,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
             ),            
             SizedBox(height: 20),
             CustomTextField(
+              onTap: () {},
               controller: emailcontroller,
               validator: (v) {
                 if (v!.isEmpty) {

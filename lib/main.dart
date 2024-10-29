@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kojina_project/generated/l10n.dart';
 import 'package:kojina_project/helper/consts.dart';
+import 'package:kojina_project/provider/Location_provider.dart';
 import 'package:kojina_project/provider/auth_provider.dart';
 import 'package:kojina_project/provider/base_provider.dart';
 import 'package:kojina_project/provider/favorite_provider.dart';
@@ -44,6 +45,8 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider<MealsProvider>(
           create: (context) => MealsProvider(),
         ),
+        ChangeNotifierProvider<LocationProvider>(
+            create: (create) => LocationProvider()),
       ],
       child: MaterialApp(
         theme: ThemeData(

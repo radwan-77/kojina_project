@@ -52,6 +52,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                       children: [
                         const CustomLabel(text: "الاسم"),
                         CustomTextField(
+                          onTap: () {},
                           controller: nameController,
                           validator: (validator) {
                             if (validator!.isEmpty) {
@@ -64,6 +65,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                         ),
                         const CustomLabel(text: "البريد الالكتروني"),
                         CustomTextField(
+                            onTap: () {},
                             controller: emailController,
                             validator: (validator) {
                               if (validator!.isEmpty) {
@@ -77,6 +79,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                             hint: "البريد الألكتروني"),
                         const CustomLabel(text: "رقم الهاتف"),
                         CustomTextField(
+                          onTap: () {},
                           controller: phoneController,
                           validator: (validator) {
                             if (validator!.isEmpty) {
@@ -92,6 +95,9 @@ class _SingUpScreenState extends State<SingUpScreen> {
                         ),
                         const CustomLabel(text: "كلمة المرور"),
                         CustomTextField(
+                          onTap: () {
+                            
+                          },
                           controller: passwordController,
                           validator: (validator) {
                             if (validator!.isEmpty) {

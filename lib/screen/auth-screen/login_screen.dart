@@ -49,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           CustomLabel(text: S.of(context).phone),
                           CustomTextField(
+                            onTap: () {},
                             controller: phoneController,
                             validator: (validator) {
                               if (validator!.isEmpty) {
@@ -64,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           const CustomLabel(text: "كلمة المرور"),
                           CustomTextField(
+                            onTap: () {},
                             controller: passwordController,
                             validator: (validator) {
                               if (validator!.isEmpty) {

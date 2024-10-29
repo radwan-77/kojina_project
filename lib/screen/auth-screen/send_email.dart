@@ -29,6 +29,7 @@ class _SendEmailScreenState extends State<SendEmailScreen> {
             ),
             SizedBox(height: 20),
             CustomTextField(
+              onTap: () {},
               controller: emailcontroller,
               validator: (v) {
                 if (v!.isEmpty) {

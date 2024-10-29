@@ -15,6 +15,7 @@ class CustomTextField extends StatefulWidget {
   final bool isPassword;
   final bool eyevisible;
   final bool obscuretext;
+  final Function() onTap;
 
   const CustomTextField(
       {super.key,
@@ -28,7 +29,7 @@ class CustomTextField extends StatefulWidget {
       this.isPassword = false,
       this.eyevisible = false,
       this.obscuretext = false,
-      this.forgetscreen});
+      this.forgetscreen, required this.onTap});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -42,6 +43,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       child: Column(
         children: [
           TextFormField(
+            onTap: () {
+              widget.onTap();
+            },
             controller: widget.controller,
             validator: widget.validator,
             obscureText: widget.obscuretext,
