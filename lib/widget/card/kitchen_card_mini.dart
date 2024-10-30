@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 
 class kitchencardmini extends StatelessWidget {
-  final String mainimage;
-  final String miniimage;
+  final String coverImage;
+  final String profileImage;
   const kitchencardmini({
     super.key,
-    required this.mainimage,
-    required this.miniimage,
+    required this.coverImage,
+    required this.profileImage,
   });
 
   @override
@@ -29,9 +29,9 @@ class kitchencardmini extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
+                    child: Image.network(
+                      "https://grand-pangolin-typically.ngrok-free.app" + coverImage,
                       fit: BoxFit.cover,
-                      mainimage,
                       width: getsize(context).width,
                       height: getsize(context).height * 0.2,
                     ),
@@ -45,9 +45,9 @@ class kitchencardmini extends StatelessWidget {
               // how to use Overflow
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
-                child: Image.asset(
+                child: Image.network(
+                  "https://grand-pangolin-typically.ngrok-free.app" + profileImage,
                   fit: BoxFit.cover,
-                  miniimage,
                   width: 100,
                   height: 100,
                 ),
