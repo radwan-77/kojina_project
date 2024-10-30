@@ -7,10 +7,10 @@ import 'package:kojina_project/provider/Location_provider.dart';
 import 'package:kojina_project/provider/auth_provider.dart';
 import 'package:kojina_project/provider/base_provider.dart';
 import 'package:kojina_project/provider/favorite_provider.dart';
+import 'package:kojina_project/provider/kitchen_provider.dart';
 import 'package:kojina_project/provider/meals_provider.dart';
 import 'package:kojina_project/screen/auth-screen/login_screen.dart';
 import 'package:kojina_project/screen/auth-screen/splash_screen.dart';
-import 'package:kojina_project/screen/location-screen/location_1.dart';
 
 import 'package:kojina_project/screen/main-screen/main_screen.dart';
 import 'package:provider/provider.dart';
@@ -47,6 +47,8 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider<LocationProvider>(
             create: (create) => LocationProvider()),
+        ChangeNotifierProvider<KitchenProvider>(
+            create: (context) => KitchenProvider()),
       ],
       child: MaterialApp(
         theme: ThemeData(
@@ -61,7 +63,7 @@ class _MyAppState extends State<MyApp> {
         ],
         supportedLocales: S.delegate.supportedLocales,
         debugShowCheckedModeBanner: false,
-        home: LocationScreen1(),
+        home: ScreenRouter(),
         // !splash screen ? splash screen : countine your shit
       ),
     );
@@ -82,6 +84,8 @@ class _ScreenRouterState extends State<ScreenRouter> {
   void initState() {
     Provider.of<AuthenticationProvider>(context, listen: false)
         .initializeAuthProvider();
+    Provider.of<KitchenProvider>(context, listen: false).getKitchen();
+
     super.initState();
   }
 

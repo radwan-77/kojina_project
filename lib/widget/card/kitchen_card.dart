@@ -5,19 +5,19 @@ import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 
 class KitchenCard extends StatefulWidget {
-  final double price;
+  final double? price;
   final String imageUrl;
   final String kitchenName;
-  final String rating;
+  final double? rating;
   final String? mineimage;
-  final String catagory;
+  final List<String> catagory;
   final Widget? kitchenpage;
 
   KitchenCard({
     required this.imageUrl,
     required this.kitchenName,
-    required this.rating,
-    required this.price,
+    this.rating,
+    this.price,
     this.mineimage,
     required this.catagory,
     this.kitchenpage,
@@ -64,8 +64,9 @@ class _KitchenCardState extends State<KitchenCard> {
                 ClipRRect(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      widget.imageUrl,
+                    child: Image.network(
+                      "https://grand-pangolin-typically.ngrok-free.app" +
+                          widget.imageUrl,
                       height: getsize(context).height * 0.2,
                       width: getsize(context).width * 0.9,
                       fit: BoxFit.cover,
@@ -83,8 +84,9 @@ class _KitchenCardState extends State<KitchenCard> {
                             padding: const EdgeInsets.only(left: 10),
                             child: Container(
                               child: ClipOval(
-                                child: Image.asset(
-                                  widget.mineimage!,
+                                child: Image.network(
+                                  "https://grand-pangolin-typically.ngrok-free.app" +
+                                      widget.mineimage!,
                                   width: 62,
                                   height: 62,
                                   fit: BoxFit.cover,
@@ -108,13 +110,7 @@ class _KitchenCardState extends State<KitchenCard> {
                                 ),
                                 Row(
                                   children: [
-                                    Text(
-                                      widget.catagory,
-                                      style: const TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                          color: tertiaryDark),
-                                    ),
+                                    Text(widget.catagory[0]),
                                   ],
                                 ),
                               ],
@@ -145,7 +141,7 @@ class _KitchenCardState extends State<KitchenCard> {
                             children: [
                               const Icon(Icons.star,
                                   color: Color(0xFFFFD233), size: 22),
-                              Text(widget.rating)
+                              Text(widget.rating.toString()),
                             ],
                           )
                         ],
