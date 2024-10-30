@@ -20,8 +20,7 @@ class SpiacialCard extends StatefulWidget {
     required this.rating,
     required this.price,
     required this.mealName,
-    required this.meal,
-    this.discount,
+    this.discount, required this.meal,
   });
 
   @override
