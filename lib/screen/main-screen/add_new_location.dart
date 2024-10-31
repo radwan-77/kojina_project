@@ -3,7 +3,7 @@ import 'package:kojina_project/helper/consts.dart';
 
 class AddNewLocationScreen extends StatelessWidget {
   const AddNewLocationScreen({super.key});
-
+// when pressed the button  navigote to locatio2 screen and when the data is fiiled it show on the screen and the user can edit it
   @override
   Widget build(BuildContext context) {
     return Scaffold(

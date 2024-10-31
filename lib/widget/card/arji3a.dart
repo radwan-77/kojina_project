@@ -143,6 +143,7 @@ class _CustomCardState extends State<CustomCard> {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => widget.kitchenpage!));
                 }
+                ;
               },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

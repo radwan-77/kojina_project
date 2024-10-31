@@ -1,0 +1,1 @@
+// screen show when the user deny the google map the home screen will be center image in the column and theres is a button and this button navigate the user to the location one  

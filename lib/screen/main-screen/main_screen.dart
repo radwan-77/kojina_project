@@ -13,7 +13,6 @@ import 'package:kojina_project/screen/notification_screen/notification_screen.da
 import 'package:kojina_project/screen/ordre_screen/order_screen.dart';
 
 import 'package:kojina_project/widget/static/listtiledrawer.dart';
-import 'package:provider/provider.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({

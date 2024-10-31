@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+// copilet code try it
 class PurchaseEndDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

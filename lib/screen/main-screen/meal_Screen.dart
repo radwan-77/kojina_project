@@ -99,6 +99,7 @@ class _MealScreenState extends State<MealScreen> {
                 text: "المكونات",
                 Sizefont: 20,
               ),
+              // the ingerdiant from the api
               const IngradiantsRow(
                 ingimage: "assets/meal1.png",
                 ingradiants: "رز",
