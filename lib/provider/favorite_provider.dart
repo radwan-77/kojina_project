@@ -1,4 +1,3 @@
-import 'package:kojina_project/model/meal_model.dart';
 import 'package:kojina_project/provider/base_provider.dart';
 
 class FavoriteProvider extends BaseProvider {

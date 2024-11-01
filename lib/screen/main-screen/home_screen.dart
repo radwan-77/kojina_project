@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:kojina_project/helper/function_helper.dart';
-import 'package:kojina_project/model/kitchen_model.dart';
 import 'package:kojina_project/provider/kitchen_provider.dart';
 import 'package:kojina_project/provider/meals_provider.dart';
 import 'package:kojina_project/screen/main-screen/kitcen_screen.dart';
-import 'package:kojina_project/screen/main-screen/meal_Screen.dart';
 import 'package:kojina_project/widget/card/arji3a.dart';
 import 'package:kojina_project/widget/card/kitchen_card.dart';
 import 'package:kojina_project/widget/clickables/catagorybutton.dart';

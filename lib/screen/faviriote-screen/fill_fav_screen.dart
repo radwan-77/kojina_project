@@ -4,8 +4,7 @@ import 'package:kojina_project/provider/favorite_provider.dart';
 import 'package:kojina_project/provider/kitchen_provider.dart';
 import 'package:kojina_project/provider/meals_provider.dart';
 import 'package:kojina_project/widget/card/arji3a.dart';
-import 'package:kojina_project/widget/card/kitchen_card_mini.dart';
-import 'package:kojina_project/widget/static/custom_label.dart';
+
 import 'package:kojina_project/widget/static/custom_tabbar.dart';
 import 'package:provider/provider.dart';
 

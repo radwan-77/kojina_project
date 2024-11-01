@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/consts.dart';
-import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/provider/meals_provider.dart';
 import 'package:kojina_project/widget/card/spiacial_card.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -72,7 +71,7 @@ class _SpiacialOrderScreenState extends State<SpiacialOrderScreen> {
                     // width: getsize(context).width * 0.9,
                     animation: true,
                     animationDuration: 800,
-                    percent: 0.8,
+                    percent: 0.2,
                     backgroundColor: tertiaryLight,
                     progressColor: mainColor,
                   ),
@@ -103,6 +102,7 @@ class _SpiacialOrderScreenState extends State<SpiacialOrderScreen> {
                     itemCount: mealsConsumer.meals.length,
                     itemBuilder: (context, index) {
                       return SpiacialCard(
+                        mealImage: mealsConsumer.meals[index].mealImage,
                         mealName: mealsConsumer.meals[index].mealName,
                         price: mealsConsumer.meals[index].price,
                         kitchenName: mealsConsumer.meals[index].kitchenName,

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 class MealModel {
   int id;
@@ -12,7 +11,7 @@ class MealModel {
   double price;
   String category;
   double rating;
-  dynamic? discount;
+  dynamic discount;
   DateTime? createdAt;
   DateTime? updatedAt;
   String? mealType;
