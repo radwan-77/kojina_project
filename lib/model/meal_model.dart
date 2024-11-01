@@ -6,31 +6,31 @@ class MealModel {
   String kitchenName;
   String mealName;
   String mealDescription;
-  List<String> ingredients;
-  String mealImage;
+  List<String>? ingredients;
+  String? mainIngredient;
+  String? mealImage;
   double price;
-  String category;
   double rating;
-  dynamic discount;
+  String? mealType;
+  String? category;
+  dynamic? discount;
   DateTime? createdAt;
   DateTime? updatedAt;
-  String? mealType;
-  String? mainIngredient;
 
   MealModel({
-    required this.rating,
-    required this.kitchenName,
     required this.id,
     required this.kitchenId,
+    required this.kitchenName,
     required this.mealName,
     required this.mealDescription,
-    required this.ingredients,
+    this.ingredients,
     this.mainIngredient,
     required this.mealImage,
     required this.price,
+    required this.rating,
     this.mealType,
     required this.category,
-    this.discount,
+    required this.discount,
     this.createdAt,
     this.updatedAt,
   });
@@ -42,15 +42,15 @@ class MealModel {
 
   factory MealModel.fromJson(Map<String, dynamic> json) => MealModel(
         id: json["id"],
-        kitchenName: json["kitch_name"],
         kitchenId: json["kitchen_id"],
+        kitchenName: json["kitchen_name"],
         mealName: json["meal_name"],
         mealDescription: json["meal_description"],
+        rating: json["rating"],
         ingredients: List<String>.from(json["ingredients"].map((x) => x)),
         mainIngredient: json["main_ingredient"],
         mealImage: json["meal_image"],
         price: json["price"],
-        rating: json["rating"],
         mealType: json["meal_type"],
         category: json["category"],
         discount: json["discount"],
@@ -60,11 +60,11 @@ class MealModel {
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "kitchenName": kitchenName,
         "kitchen_id": kitchenId,
         "meal_name": mealName,
+        "kitchen_name": kitchenName,
         "meal_description": mealDescription,
-        "ingredients": List<dynamic>.from(ingredients.map((x) => x)),
+        "ingredients": List<dynamic>.from(ingredients!.map((x) => x)),
         "main_ingredient": mainIngredient,
         "meal_image": mealImage,
         "price": price,

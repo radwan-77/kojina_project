@@ -1,8 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/provider/kitchen_provider.dart';
 import 'package:kojina_project/provider/meals_provider.dart';
 import 'package:kojina_project/screen/main-screen/kitcen_screen.dart';
+import 'package:kojina_project/screen/main-screen/meal_Screen.dart';
 import 'package:kojina_project/widget/card/arji3a.dart';
 import 'package:kojina_project/widget/card/kitchen_card.dart';
 import 'package:kojina_project/widget/clickables/catagorybutton.dart';
@@ -79,6 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           kitchenId: mealsConsumer.meals[index].kitchenId,
                           mealImage: mealsConsumer.meals[index].mealImage,
                           kitchenpage: KitchenScreen(),
+                          mealpage: MealScreen(),
                         );
                       },
                       itemCount: mealsConsumer.meals.length,
@@ -147,80 +150,48 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
-                  kitchenConsumer.categoryMeals.isEmpty
-                      ? SizedBox(
-                          height: getsize(context).height * 0.30,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 5, // Number of shimmer items
-                            itemBuilder: (context, index) {
-                              return Shimmer.fromColors(
-                                baseColor: Colors.grey[300]!,
-                                highlightColor: Colors.grey[100]!,
-                                child: SizedBox(
-                                  height: getsize(context).height * 0.30,
-                                  width: getsize(context).width * 0.6,
-                                  child: Card(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          height:
-                                              getsize(context).height * 0.20,
-                                          color: Colors.white,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Container(
-                                            height: 20,
-                                            width: getsize(context).width * 0.5,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Container(
-                                            height: 20,
-                                            width: getsize(context).width * 0.3,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
+                  SizedBox(
+                    height: getsize(context).height * 0.30,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: kitchenConsumer.categoryMeals.length,
+                      itemBuilder: (context, index) {
+                        print(
+                            "fgjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjid" +
+                                kitchenConsumer.categoryMeals[index].mealName);
+                        return SizedBox(
+                          height: getsize(context).height * 0.10,
+                          child: CustomCard(
+                            mealName: kitchenConsumer.categoryMeals.isEmpty
+                                ? kitchenConsumer.categoryMeals[index].mealName
+                                : "No meals",
+                            id: kitchenConsumer.categoryMeals.isEmpty
+                                ? kitchenConsumer.categoryMeals[index].id
+                                : 0,
+                            price: kitchenConsumer.categoryMeals.isEmpty
+                                ? (kitchenConsumer.categoryMeals[index].price ??
+                                    0.0)
+                                : 0.0,
+                            kitchenName: kitchenConsumer.categoryMeals.isEmpty
+                                ? kitchenConsumer
+                                    .categoryMeals[index].kitchenName
+                                : "No kitchen",
+                            rating: kitchenConsumer.categoryMeals[index].rating,
+                            kitchenId:
+                                kitchenConsumer.categoryMeals[index].kitchenId,
+                            mealImage: kitchenConsumer.categoryMeals.isEmpty
+                                ? kitchenConsumer.categoryMeals[index].mealImage
+                                : "ddd",
+                            mealDescription:
+                                kitchenConsumer.categoryMeals.isEmpty
+                                    ? kitchenConsumer
+                                        .categoryMeals[index].mealDescription
+                                    : "ddd",
                           ),
-                        )
-                      : SizedBox(
-                          height: getsize(context).height * 0.30,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: kitchenConsumer.categoryMeals.length,
-                            itemBuilder: (context, index) {
-                              return SizedBox(
-                                height: getsize(context).height * 0.10,
-                                child: CustomCard(
-                                  mealName: kitchenConsumer
-                                      .categoryMeals[index].mealName,
-                                  id: kitchenConsumer.categoryMeals[index].id,
-                                  price: kitchenConsumer
-                                      .categoryMeals[index].price,
-                                  kitchenName: kitchenConsumer
-                                      .categoryMeals[index].kitchenName,
-                                  rating: kitchenConsumer
-                                      .categoryMeals[index].rating,
-                                  kitchenId: kitchenConsumer
-                                      .categoryMeals[index].kitchenId,
-                                  mealImage: kitchenConsumer
-                                      .categoryMeals[index].mealImage,
-                                ),
-                              );
-                            },
-                          ),
-                        ),
+                        );
+                      },
+                    ),
+                  ),
                 ],
               ),
               //////////////////////update when select category////////////////////////

@@ -47,5 +47,8 @@ class LocationProvider extends BaseProvider {
     //   widget.longiTude = newlocation.longitude;
     // });
     setBusy(false);
+    if (kDebugMode) {
+      print("LATLOC ${inpositon!.latitude} - LONGLOC ${inpositon!.longitude}");
+    }
   }
 }

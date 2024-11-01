@@ -8,21 +8,6 @@ class KitchenProvider extends BaseProvider {
   List<KitchenModel> kitchenList = [];
   List<MealModel> kitchenMeals = [];
   List<MealModel> categoryMeals = [];
-  bool _isBusy = false;
-  bool _hasFailed = false;
-
-  bool get isBusy => _isBusy;
-  bool get hasFailed => _hasFailed;
-
-  void setBusy(bool value) {
-    _isBusy = value;
-    notifyListeners();
-  }
-
-  void setFailed(bool value) {
-    _hasFailed = value;
-    notifyListeners();
-  }
 
   //getmealsbycategory
   getMealsByCategory(String categoryName) async {

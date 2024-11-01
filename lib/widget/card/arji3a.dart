@@ -32,7 +32,7 @@ class CustomCard extends StatefulWidget {
       this.discount,
       this.mealpage,
       this.kitchenpage,
-       required this.id,
+      required this.id,
       required this.kitchenId,
       this.mealDescription,
       this.ingredients,
@@ -97,23 +97,23 @@ class _CustomCardState extends State<CustomCard> {
                   ),
                   // Heart Icon Positioned
                   Positioned(
-            right: 10,
-            top: 10,
-            child: GestureDetector(
-              onTap: () {
-                favoriteProvider.toggleFavorite(widget.id);
-              },
-              child: Icon(
-                favoriteProvider.isFavorite(widget.id)
-                    ? Icons.favorite
-                    : Icons.favorite_border,
-                color: favoriteProvider.isFavorite(widget.id)
-                    ? Colors.red
-                    : Colors.grey,
-                size: 35,
-              ),
-            ),
-          ),
+                    right: 10,
+                    top: 10,
+                    child: GestureDetector(
+                      onTap: () {
+                        favoriteProvider.toggleFavorite(widget.id);
+                      },
+                      child: Icon(
+                        favoriteProvider.isFavorite(widget.id)
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        color: favoriteProvider.isFavorite(widget.id)
+                            ? Colors.red
+                            : Colors.grey,
+                        size: 35,
+                      ),
+                    ),
+                  ),
                   // Discount badge if applicable
                   if (widget.discount != null)
                     Positioned(
