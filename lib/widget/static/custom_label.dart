@@ -22,22 +22,15 @@ class CustomLabel extends StatelessWidget {
         children: [
           Text(
             text,
-            style: TextStyle(
-                color: onPrimaryLight,
-                fontWeight: FontWeight.bold,
-                fontSize: Sizefont,
-                fontFamily: "cairo"),
+            style: bold15,
           ),
           if (clickhere != null)
             TextButton(
               onPressed: () {},
               child: Text(
                 clickhere!,
-                style: const TextStyle(
-                    color: tertiaryLight,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                    fontFamily: "cairo"),
+                style: normal12,
+
               ),
             )
         ],

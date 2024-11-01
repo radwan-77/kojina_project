@@ -24,7 +24,7 @@ class _KitchenScreenState extends State<KitchenScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MealsProvider>(builder: (context, mealsProvider, _) {
+    return Consumer<MealsProvider>(builder: (context, mealsConsumer, _) {
       return Consumer<KitchenProvider>(builder: (context, kitchenConsumer, _) {
         return Scaffold(
           appBar: AppBar(),
@@ -73,32 +73,32 @@ class _KitchenScreenState extends State<KitchenScreen> {
                     SingleChildScrollView(
                       child: Column(
                         children: [
-                          const CustomLabel(
-                            text: "الأصناف ",
-                            Sizefont: 20,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 14),
-                            child: SizedBox(
-                              height: 50,
-                              width: getsize(context).width,
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: 5,
-                                itemBuilder: (context, index) {
-                                  return CategoryButton(
-                                    text: "الكل",
-                                    onPressed: () {
-                                      setState(() {
-                                        selectedCategory = index;
-                                      });
-                                    },
-                                    isSlected: index == selectedCategory,
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
+                          // const CustomLabel(
+                          //   text: "الأصناف ",
+                          //   Sizefont: 20,
+                          // ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(bottom: 14),
+                          //   child: SizedBox(
+                          //     height: 50,
+                          //     width: getsize(context).width,
+                          //     child: ListView.builder(
+                          //       scrollDirection: Axis.horizontal,
+                          //       itemCount: 5,
+                          //       itemBuilder: (context, index) {
+                          //         return CategoryButton(
+                          //           text: "الكل",
+                          //           onPressed: () {
+                          //             setState(() {
+                          //               selectedCategory = index;
+                          //             });
+                          //           },
+                          //           isSlected: index == selectedCategory,
+                          //         );
+                          //       },
+                          //     ),
+                          //   ),
+                          // ),
 
                           // category 1
                           const CustomLabel(
@@ -110,22 +110,19 @@ class _KitchenScreenState extends State<KitchenScreen> {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 return CustomCard(
-                                  meal: mealsProvider
-                                      .meals[index], // Add itemId here
-                                  mealName: mealsProvider.meals[index].mealName,
-                                  imageUrl: mealsProvider.meals[index].imageUrl,
+                                  mealImage:
+                                      mealsConsumer.meals[index].mealImage,
+                                  id: mealsConsumer.meals[index].id,
+                                  mealName: mealsConsumer.meals[index].mealName,
+                                  price: mealsConsumer.meals[index].price,
                                   kitchenName:
-                                      mealsProvider.meals[index].kitchenName,
-                                  rating: mealsProvider.meals[index].rating,
-                                  price: mealsProvider.meals[index].price,
-                                  // discount: mealsProvider.meals[index]
-                                  //     .discount, // Example discount, adjust as needed
-                                  mealpage: MealScreen(), // Pass meal screen
-                                  kitchenpage:
-                                      KitchenScreen(), // Pass kitchen screen
+                                      mealsConsumer.meals[index].kitchenName,
+                                  rating: mealsConsumer.meals[index].rating,
+                                  kitchenId:
+                                      mealsConsumer.meals[index].kitchenId,
                                 );
                               },
-                              itemCount: mealsProvider.meals.length,
+                              itemCount: mealsConsumer.meals.length,
                             ),
                           ),
                           // category 2
@@ -138,22 +135,19 @@ class _KitchenScreenState extends State<KitchenScreen> {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 return CustomCard(
-                                  meal: mealsProvider
-                                      .meals[index], // Add itemId here
-                                  mealName: mealsProvider.meals[index].mealName,
-                                  imageUrl: mealsProvider.meals[index].imageUrl,
+                                  mealImage:
+                                      mealsConsumer.meals[index].mealImage,
+                                  id: mealsConsumer.meals[index].id,
+                                  mealName: mealsConsumer.meals[index].mealName,
+                                  price: mealsConsumer.meals[index].price,
                                   kitchenName:
-                                      mealsProvider.meals[index].kitchenName,
-                                  rating: mealsProvider.meals[index].rating,
-                                  price: mealsProvider.meals[index].price,
-                                  // discount: mealsProvider.meals[index]
-                                  //     .discount, // Example discount, adjust as needed
-                                  mealpage: MealScreen(), // Pass meal screen
-                                  kitchenpage:
-                                      KitchenScreen(), // Pass kitchen screen
+                                      mealsConsumer.meals[index].kitchenName,
+                                  rating: mealsConsumer.meals[index].rating,
+                                  kitchenId:
+                                      mealsConsumer.meals[index].kitchenId,
                                 );
                               },
-                              itemCount: mealsProvider.meals.length,
+                              itemCount: mealsConsumer.meals.length,
                             ),
                           ),
                           // cataegory 3
@@ -166,22 +160,19 @@ class _KitchenScreenState extends State<KitchenScreen> {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 return CustomCard(
-                                  meal: mealsProvider
-                                      .meals[index], // Add itemId here
-                                  mealName: mealsProvider.meals[index].mealName,
-                                  imageUrl: mealsProvider.meals[index].imageUrl,
+                                  mealImage:
+                                      mealsConsumer.meals[index].mealImage,
+                                  id: mealsConsumer.meals[index].id,
+                                  mealName: mealsConsumer.meals[index].mealName,
+                                  price: mealsConsumer.meals[index].price,
                                   kitchenName:
-                                      mealsProvider.meals[index].kitchenName,
-                                  rating: mealsProvider.meals[index].rating,
-                                  price: mealsProvider.meals[index].price,
-                                  // discount: mealsProvider.meals[index]
-                                  //     .discount, // Example discount, adjust as needed
-                                  mealpage: MealScreen(), // Pass meal screen
-                                  kitchenpage:
-                                      KitchenScreen(), // Pass kitchen screen
+                                      mealsConsumer.meals[index].kitchenName,
+                                  rating: mealsConsumer.meals[index].rating,
+                                  kitchenId:
+                                      mealsConsumer.meals[index].kitchenId,
                                 );
                               },
-                              itemCount: mealsProvider.meals.length,
+                              itemCount: mealsConsumer.meals.length,
                             ),
                           ),
                         ],

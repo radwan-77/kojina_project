@@ -7,6 +7,7 @@ import 'package:kojina_project/provider/base_provider.dart';
 class KitchenProvider extends BaseProvider {
   List<KitchenModel> kitchenList = [];
   List<MealModel> kitchenMeals = [];
+  List<MealModel> categoryMeals = [];
   bool _isBusy = false;
   bool _hasFailed = false;
 
@@ -33,8 +34,8 @@ class KitchenProvider extends BaseProvider {
       var decodedData = json.decode(response.body);
       print(decodedData);
 
-      kitchenMeals =
-          List<Meal>.from(decodedData.map((item) => Meal.fromJson(item)));
+      categoryMeals = List<MealModel>.from(
+          decodedData.map((item) => MealModel.fromJson(item)));
 
       notifyListeners();
     } else {
@@ -94,8 +95,8 @@ class KitchenProvider extends BaseProvider {
       var decodedData = json.decode(response.body);
       print(decodedData);
 
-      kitchenMeals =
-          List<Meal>.from(decodedData.map((item) => Meal.fromJson(item)));
+      kitchenMeals = List<MealModel>.from(
+          decodedData.map((item) => MealModel.fromJson(item)));
 
       notifyListeners();
     } else {
@@ -105,22 +106,22 @@ class KitchenProvider extends BaseProvider {
   }
 
   //fetch Meals
-  fetchMeals() async {
-    setBusy(true);
-    final response = await api.getRequest(
-        "https://grand-pangolin-typically.ngrok-free.app/api/meals");
+  // fetchMeals() async {
+  //   setBusy(true);
+  //   final response = await api.getRequest(
+  //       "https://grand-pangolin-typically.ngrok-free.app/api/meals");
 
-    if (response.statusCode == 200) {
-      var decodedData = json.decode(response.body);
-      print(decodedData);
+  //   if (response.statusCode == 200) {
+  //     var decodedData = json.decode(response.body);
+  //     print(decodedData);
 
-      kitchenMeals =
-          List<Meal>.from(decodedData.map((item) => Meal.fromJson(item)));
+  //     kitchenMeals =
+  //         List<MealModel>.from(decodedData.map((item) => MealModel.fromJson(item)));
 
-      notifyListeners();
-    } else {
-      setFailed(true);
-    }
-    setBusy(false);
-  }
+  //     notifyListeners();
+  //   } else {
+  //     setFailed(true);
+  //   }
+  //   setBusy(false);
+  // }
 }

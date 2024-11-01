@@ -4,7 +4,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/provider/kitchen_provider.dart';
-import 'package:kojina_project/screen/auth-screen/settings_screen.dart';
+import 'package:kojina_project/screen/DrawerScreen/settings_screen.dart';
 import 'package:kojina_project/screen/cart-screen/empty_cart_screen.dart';
 import 'package:kojina_project/screen/faviriote-screen/fav_screen.dart';
 import 'package:kojina_project/screen/main-screen/add_new_location.dart';

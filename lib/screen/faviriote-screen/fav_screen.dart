@@ -19,7 +19,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
       return Scaffold(
         drawer: Drawer(),
         body: Center(
-          child: favoriteConsumer.favoriteItems.length > 0
+          child: favoriteConsumer.favoriteItemIds.length > 0
               ? FillFavirioteScreen()
               : Column(
                   mainAxisAlignment: MainAxisAlignment.center,

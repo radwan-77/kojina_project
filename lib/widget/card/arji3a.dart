@@ -1,34 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/model/meal_model.dart';
+import 'package:kojina_project/model/meal_model.dart';
 import 'package:kojina_project/provider/favorite_provider.dart';
 import 'package:provider/provider.dart';
+
+import '../../model/meal_model.dart';
 
 class CustomCard extends StatefulWidget {
   final String mealName;
   final double price;
-  final String imageUrl;
   final String kitchenName;
-  final String rating;
+  final double rating;
   final int? discount;
-  final String? description;
   final Widget? mealpage;
   final Widget? kitchenpage;
-  final Meal meal; // Add itemId to constructor for unique identification
+  final int id;
+  final int kitchenId;
+  final String? mealDescription;
+  final List<String>? ingredients;
+  final String? mainIngredient;
+  final dynamic mealImage;
+  final String? mealType; //event or daily meal
+  final String? category;
 
-  const CustomCard({
-    super.key,
-    required this.imageUrl,
-    required this.kitchenName,
-    required this.rating,
-    required this.price,
-    required this.mealName,
-    required this.meal,
-    this.discount,
-    this.description,
-    this.mealpage,
-    this.kitchenpage,
-  });
+  const CustomCard(
+      {required this.mealName,
+      required this.price,
+      required this.kitchenName,
+      required this.rating,
+      this.discount,
+      this.mealpage,
+      this.kitchenpage,
+       required this.id,
+      required this.kitchenId,
+      this.mealDescription,
+      this.ingredients,
+      this.mainIngredient,
+      this.mealImage,
+      this.mealType,
+      this.category});
 
   @override
   State<CustomCard> createState() => _CustomCardState();
@@ -78,7 +89,7 @@ class _CustomCardState extends State<CustomCard> {
                       }
                     },
                     child: Image.asset(
-                      widget.imageUrl,
+                      widget.mealImage,
                       height: getsize(context).height * 0.2,
                       width: getsize(context).width * 0.7,
                       fit: BoxFit.cover,
@@ -86,23 +97,23 @@ class _CustomCardState extends State<CustomCard> {
                   ),
                   // Heart Icon Positioned
                   Positioned(
-                    right: 10,
-                    top: 10,
-                    child: GestureDetector(
-                      onTap: () {
-                        favoriteProvider.toggleFavorite(widget.meal);
-                      },
-                      child: Icon(
-                        favoriteProvider.isFavorite(widget.meal)
-                            ? Icons.favorite
-                            : Icons.favorite_border,
-                        color: favoriteProvider.isFavorite(widget.meal)
-                            ? Colors.red
-                            : Colors.grey,
-                        size: 35,
-                      ),
-                    ),
-                  ),
+            right: 10,
+            top: 10,
+            child: GestureDetector(
+              onTap: () {
+                favoriteProvider.toggleFavorite(widget.id);
+              },
+              child: Icon(
+                favoriteProvider.isFavorite(widget.id)
+                    ? Icons.favorite
+                    : Icons.favorite_border,
+                color: favoriteProvider.isFavorite(widget.id)
+                    ? Colors.red
+                    : Colors.grey,
+                size: 35,
+              ),
+            ),
+          ),
                   // Discount badge if applicable
                   if (widget.discount != null)
                     Positioned(
@@ -163,7 +174,7 @@ class _CustomCardState extends State<CustomCard> {
                         children: [
                           const Icon(Icons.star,
                               color: Color(0xFFFFD233), size: 22),
-                          Text(widget.rating)
+                          Text('${widget.rating}')
                         ],
                       )
                     ],

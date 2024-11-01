@@ -2,20 +2,19 @@ import 'package:kojina_project/model/meal_model.dart';
 import 'package:kojina_project/provider/base_provider.dart';
 
 class FavoriteProvider extends BaseProvider {
-  List<Meal> _favoriteItems = [];
+  List<int> favoriteItemIds = [];
 
-  List<Meal> get favoriteItems => _favoriteItems;
-
-  void toggleFavorite(Meal itemId) {
-    if (_favoriteItems.contains(itemId)) {
-      _favoriteItems.remove(itemId);
+  // This function will be used to toggle favorite status of a meal
+  void toggleFavorite(int id) {
+    if (favoriteItemIds.contains(id)) {
+      favoriteItemIds.remove(id);
     } else {
-      _favoriteItems.add(itemId);
+      favoriteItemIds.add(id);
     }
-    setBusy(false);
+    notifyListeners();
   }
 
-  bool isFavorite(Meal itemId) {
-    return _favoriteItems.contains(itemId);
+  bool isFavorite(int id) {
+    return favoriteItemIds.contains(id);
   }
 }

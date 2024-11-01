@@ -12,12 +12,12 @@ class SpiacialOrderScreen extends StatefulWidget {
   @override
   State<SpiacialOrderScreen> createState() => _SpiacialOrderScreenState();
 }
-// list from meals of the kitchen 
+// list from meals of the kitchen
 
 class _SpiacialOrderScreenState extends State<SpiacialOrderScreen> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<MealsProvider>(builder: (context, mealsProvider, _) {
+    return Consumer<MealsProvider>(builder: (context, mealsConsumer, _) {
       return Scaffold(
         appBar: AppBar(),
         body: Stack(
@@ -100,15 +100,14 @@ class _SpiacialOrderScreenState extends State<SpiacialOrderScreen> {
                       crossAxisCount: 2,
                       mainAxisSpacing: 15,
                     ),
-                    itemCount: mealsProvider.meals.length,
+                    itemCount: mealsConsumer.meals.length,
                     itemBuilder: (context, index) {
                       return SpiacialCard(
-                        meal: mealsProvider.meals[index],
-                        mealName: mealsProvider.meals[index].mealName,
-                        imageUrl: mealsProvider.meals[index].imageUrl,
-                        kitchenName: mealsProvider.meals[index].kitchenName,
-                        rating: mealsProvider.meals[index].rating,
-                        price: mealsProvider.meals[index].price,
+                        mealName: mealsConsumer.meals[index].mealName,
+                        price: mealsConsumer.meals[index].price,
+                        kitchenName: mealsConsumer.meals[index].kitchenName,
+                        rating: mealsConsumer.meals[index].rating,
+                        kitchenId: mealsConsumer.meals[index].kitchenId,
                       );
                     },
                   ),

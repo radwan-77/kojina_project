@@ -27,10 +27,6 @@ class _FillFavirioteScreenState extends State<FillFavirioteScreen> {
             body: SingleChildScrollView(
               child: Column(
                 children: [
-                  kitchencardmini(
-                    coverImage: kitchenConsumer.kitchenList[0].coverImage,
-                    profileImage: kitchenConsumer.kitchenList[0].profileImage,
-                  ),
                   CustomTabbar(
                     toppadding: 10,
                     tabs: [
@@ -54,9 +50,6 @@ class _FillFavirioteScreenState extends State<FillFavirioteScreen> {
                       Column(
                         // when use singelchildscrollview the content disapper
                         children: [
-                          CustomLabel(
-                            text: "Kitchen name",
-                          ),
                           SizedBox(
                             height: 10,
                           ),
@@ -65,24 +58,25 @@ class _FillFavirioteScreenState extends State<FillFavirioteScreen> {
 
                             // The height is set to ensure that the ListView.builder has a defined space to render its items.
                             // Without a defined height, the ListView.builder might not render correctly or might cause layout issues.
+                            width: getsize(context).width,
                             height: getsize(context).height * 0.3,
                             child: ListView.builder(
                               // physics: NeverScrollableScrollPhysics(),
-                              scrollDirection: Axis.horizontal,
-                              itemCount: favoriteConsumer.favoriteItems.length,
+                              scrollDirection: Axis.vertical,
+                              itemCount:
+                                  favoriteConsumer.favoriteItemIds.length,
                               itemBuilder: (context, index) {
                                 return CustomCard(
-                                  meal: mealsConsumer.meals[index],
-                                  mealName: favoriteConsumer
-                                      .favoriteItems[index].mealName,
-                                  imageUrl: favoriteConsumer
-                                      .favoriteItems[index].imageUrl,
-                                  kitchenName: favoriteConsumer
-                                      .favoriteItems[index].kitchenName,
-                                  rating: favoriteConsumer
-                                      .favoriteItems[index].rating,
-                                  price: favoriteConsumer
-                                      .favoriteItems[index].price,
+                                  mealImage:
+                                      mealsConsumer.meals[index].mealImage,
+                                  id: mealsConsumer.meals[index].id,
+                                  mealName: mealsConsumer.meals[index].mealName,
+                                  price: mealsConsumer.meals[index].price,
+                                  kitchenName:
+                                      mealsConsumer.meals[index].kitchenName,
+                                  rating: mealsConsumer.meals[index].rating,
+                                  kitchenId:
+                                      mealsConsumer.meals[index].kitchenId,
                                 );
                               },
                             ),
