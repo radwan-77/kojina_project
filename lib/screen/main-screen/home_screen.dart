@@ -154,44 +154,64 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: getsize(context).height * 0.30,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: kitchenConsumer.categoryMeals.length,
                       itemBuilder: (context, index) {
-                        print(
-                            "fgjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjid" +
-                                kitchenConsumer.categoryMeals[index].mealName);
-                        return SizedBox(
-                          height: getsize(context).height * 0.10,
-                          child: CustomCard(
-                            mealName: kitchenConsumer.categoryMeals.isEmpty
-                                ? kitchenConsumer.categoryMeals[index].mealName
-                                : "No meals",
-                            id: kitchenConsumer.categoryMeals.isEmpty
-                                ? kitchenConsumer.categoryMeals[index].id
-                                : 0,
-                            price: kitchenConsumer.categoryMeals.isEmpty
-                                ? (kitchenConsumer.categoryMeals[index].price ??
-                                    0.0)
-                                : 0.0,
-                            kitchenName: kitchenConsumer.categoryMeals.isEmpty
-                                ? kitchenConsumer
-                                    .categoryMeals[index].kitchenName
-                                : "No kitchen",
-                            rating: kitchenConsumer.categoryMeals[index].rating,
-                            kitchenId:
-                                kitchenConsumer.categoryMeals[index].kitchenId,
-                            mealImage: kitchenConsumer.categoryMeals.isEmpty
-                                ? kitchenConsumer.categoryMeals[index].mealImage
-                                : "ddd",
-                            mealDescription:
-                                kitchenConsumer.categoryMeals.isEmpty
-                                    ? kitchenConsumer
-                                        .categoryMeals[index].mealDescription
-                                    : "ddd",
-                          ),
+                        return CustomCard(
+                          id: mealsConsumer.meals[index].id,
+                          mealName: mealsConsumer.meals[index].mealName,
+                          price: mealsConsumer.meals[index].price,
+                          kitchenName: mealsConsumer.meals[index].kitchenName,
+                          rating: mealsConsumer.meals[index].rating,
+                          kitchenId: mealsConsumer.meals[index].kitchenId,
+                          mealImage: mealsConsumer.meals[index].mealImage,
+                          kitchenpage: KitchenScreen(),
+                          mealpage: MealScreen(),
                         );
                       },
+                      itemCount: mealsConsumer.meals.length,
                     ),
                   ),
+                  // SizedBox(
+                  //   height: getsize(context).height * 0.30,
+                  //   child: ListView.builder(
+                  //     scrollDirection: Axis.horizontal,
+                  //     itemCount: kitchenConsumer.categoryMeals.length,
+                  //     itemBuilder: (context, index) {
+                  //       print(
+                  //           "fgjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjidjid" +
+                  //               kitchenConsumer.categoryMeals[index].mealName);
+                  //       return SizedBox(
+                  //         height: getsize(context).height * 0.10,
+                  //         child: CustomCard(
+                  //           mealName: kitchenConsumer.categoryMeals.isEmpty
+                  //               ? kitchenConsumer.categoryMeals[index].mealName
+                  //               : "No meals",
+                  //           id: kitchenConsumer.categoryMeals.isEmpty
+                  //               ? kitchenConsumer.categoryMeals[index].id
+                  //               : 0,
+                  //           price: kitchenConsumer.categoryMeals.isEmpty
+                  //               ? (kitchenConsumer.categoryMeals[index].price ??
+                  //                   0.0)
+                  //               : 0.0,
+                  //           kitchenName: kitchenConsumer.categoryMeals.isEmpty
+                  //               ? kitchenConsumer
+                  //                   .categoryMeals[index].kitchenName
+                  //               : "No kitchen",
+                  //           rating: kitchenConsumer.categoryMeals[index].rating,
+                  //           kitchenId:
+                  //               kitchenConsumer.categoryMeals[index].kitchenId,
+                  //           mealImage: kitchenConsumer.categoryMeals.isEmpty
+                  //               ? kitchenConsumer.categoryMeals[index].mealImage
+                  //               : "ddd",
+                  //           mealDescription:
+                  //               kitchenConsumer.categoryMeals.isEmpty
+                  //                   ? kitchenConsumer
+                  //                       .categoryMeals[index].mealDescription
+                  //                   : "ddd",
+                  //         ),
+                  //       );
+                  //     },
+                  //   ),
+                  // ),
                 ],
               ),
               //////////////////////update when select category////////////////////////
