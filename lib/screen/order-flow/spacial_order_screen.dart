@@ -99,15 +99,15 @@ class _SpiacialOrderScreenState extends State<SpiacialOrderScreen> {
                       crossAxisCount: 2,
                       mainAxisSpacing: 15,
                     ),
-                    itemCount: mealsConsumer.meals.length,
+                    itemCount: mealsConsumer.primaryMeals.length,
                     itemBuilder: (context, index) {
                       return SpiacialCard(
-                        mealImage: mealsConsumer.meals[index].mealImage,
-                        mealName: mealsConsumer.meals[index].mealName,
-                        price: mealsConsumer.meals[index].price,
-                        kitchenName: mealsConsumer.meals[index].kitchenName,
-                        rating: mealsConsumer.meals[index].rating,
-                        kitchenId: mealsConsumer.meals[index].kitchenId,
+                        mealImage: mealsConsumer.primaryMeals[index].mealImage,
+                        mealName: mealsConsumer.primaryMeals[index].mealName,
+                        price: mealsConsumer.primaryMeals[index].price,
+                        kitchenName: mealsConsumer.primaryMeals[index].kitchenName,
+                        rating: mealsConsumer.primaryMeals[index].rating,
+                        kitchenId: mealsConsumer.primaryMeals[index].kitchenId,
                       );
                     },
                   ),

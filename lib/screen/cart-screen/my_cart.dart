@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
+import 'package:kojina_project/model/meal_model.dart';
 import 'package:kojina_project/widget/clickables/add_to_cart_button.dart';
 import 'package:kojina_project/widget/static/meal_row_ingraidantes.dart';
 
@@ -45,7 +46,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
                         child: Image.asset(
-                          "assets/face.png",
+                          "assets/jomira_mini.png",
                           fit: BoxFit.cover,
                           width: 150,
                           height: 150,
@@ -54,39 +55,39 @@ class _MyCartScreenState extends State<MyCartScreen> {
                     ),
                     Text("اسم المطعم", style: bold20),
                     MealRowWidget(
-                        imageUrl: "assets/face.png",
+                        imageUrl: "assets/meal1.png",
                         mealName: "mealName",
                         price: 5),
                     MealRowWidget(
-                        imageUrl: "assets/face.png",
+                        imageUrl: "assets/meal1.png",
                         mealName: "mealName",
                         price: 5),
                     MealRowWidget(
-                        imageUrl: "assets/face.png",
+                        imageUrl: "assets/meal1.png",
                         mealName: "mealName",
                         price: 5),
                     MealRowWidget(
-                        imageUrl: "assets/face.png",
+                        imageUrl: "assets/meal1.png",
                         mealName: "mealName",
                         price: 5),
                     MealRowWidget(
-                        imageUrl: "assets/face.png",
+                        imageUrl: "assets/meal1.png",
                         mealName: "mealName",
                         price: 5),
                     MealRowWidget(
-                        imageUrl: "assets/face.png",
+                        imageUrl: "assets/meal1.png",
                         mealName: "mealName",
                         price: 5),
                     MealRowWidget(
-                        imageUrl: "assets/face.png",
+                        imageUrl: "assets/meal1.png",
                         mealName: "mealName",
                         price: 5),
                     MealRowWidget(
-                        imageUrl: "assets/face.png",
+                        imageUrl: "assets/meal1.png",
                         mealName: "mealName",
                         price: 5),
                     MealRowWidget(
-                        imageUrl: "assets/face.png",
+                        imageUrl: "assets/meal1.png",
                         mealName: "mealName",
                         price: 5),
                     SizedBox(

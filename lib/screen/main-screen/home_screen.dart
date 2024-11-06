@@ -63,6 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Column(
                 children: [
+                  ////////////////////discounts////////////////////////
                   const CustomLabel(
                     text: "التخفيضات",
                     clickhere: "انظر للمزيد",
@@ -71,48 +72,57 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: getsize(context).height * 0.30,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
+                      itemCount: mealsConsumer.discountedMeals.length,
                       itemBuilder: (context, index) {
                         return CustomCard(
-                          id: mealsConsumer.meals[index].id,
-                          mealName: mealsConsumer.meals[index].mealName,
-                          price: mealsConsumer.meals[index].price,
-                          kitchenName: mealsConsumer.meals[index].kitchenName,
-                          rating: mealsConsumer.meals[index].rating,
-                          kitchenId: mealsConsumer.meals[index].kitchenId,
-                          mealImage: mealsConsumer.meals[index].mealImage,
+                          id: mealsConsumer.discountedMeals[index].id,
+                          mealName:
+                              mealsConsumer.discountedMeals[index].mealName,
+                          price: mealsConsumer.discountedMeals[index].price,
+                          kitchenName:
+                              mealsConsumer.discountedMeals[index].kitchenName,
+                          rating: mealsConsumer.discountedMeals[index].rating,
+                          kitchenId:
+                              mealsConsumer.discountedMeals[index].kitchenId,
+                          mealImage:
+                              mealsConsumer.discountedMeals[index].mealImage,
+                          discount: mealsConsumer
+                              .discountedMeals[index].discount
+                              ?.toInt(),
                           kitchenpage: KitchenScreen(),
                           mealpage: MealScreen(),
                         );
                       },
-                      itemCount: mealsConsumer.meals.length,
                     ),
                   ),
-                  //////////////////////all meals////////////////////////
-                  // const CustomLabel(
-                  //   text: "الوجبات المتاحة",
-                  //   clickhere: "انظر للمزيد",
-                  // ),
-                  // SizedBox(
-                  //   height: getsize(context).height * 0.30,
-                  //   child: ListView.builder(
-                  //     scrollDirection: Axis.horizontal,
-                  //     itemBuilder: (context, index) {
-                  //       return CustomCard(
-                  //         meal: mealsConsumer.meals[index], // Add itemId here
-                  //         mealName: mealsConsumer.meals[index].mealName,
-                  //         imageUrl: mealsConsumer.meals[index].imageUrl,
-                  //         kitchenName: mealsConsumer.meals[index].kitchenName,
-                  //         rating: mealsConsumer.meals[index].rating,
-                  //         price: mealsConsumer.meals[index].price,
-                  //         // discount: mealsConsumer.meals[index]
-                  //         //     .discount, // Example discount, adjust as needed
-                  //         mealpage: MealScreen(), // Pass meal screen
-                  //         kitchenpage: KitchenScreen(), // Pass kitchen screen
-                  //       );
-                  //     },
-                  //     itemCount: mealsConsumer.meals.length,
-                  //   ),
-                  // ),
+                  ////////////////////avilibal meals////////////////////////
+                  const CustomLabel(
+                    text: "الوجبات المتاحة",
+                    clickhere: "انظر للمزيد",
+                  ),
+                  SizedBox(
+                    height: getsize(context).height * 0.30,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: mealsConsumer.primaryMeals.length,
+                      itemBuilder: (context, index) {
+                        return CustomCard(
+                          id: mealsConsumer.primaryMeals[index].id,
+                          mealName: mealsConsumer.primaryMeals[index].mealName,
+                          price: mealsConsumer.primaryMeals[index].price,
+                          kitchenName:
+                              mealsConsumer.primaryMeals[index].kitchenName,
+                          rating: mealsConsumer.primaryMeals[index].rating,
+                          kitchenId:
+                              mealsConsumer.primaryMeals[index].kitchenId,
+                          mealImage:
+                              mealsConsumer.primaryMeals[index].mealImage,
+                          kitchenpage: KitchenScreen(),
+                          mealpage: MealScreen(),
+                        );
+                      },
+                    ),
+                  ),
                 ],
               ),
 
@@ -156,18 +166,22 @@ class _HomeScreenState extends State<HomeScreen> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return CustomCard(
-                          id: mealsConsumer.meals[index].id,
-                          mealName: mealsConsumer.meals[index].mealName,
-                          price: mealsConsumer.meals[index].price,
-                          kitchenName: mealsConsumer.meals[index].kitchenName,
-                          rating: mealsConsumer.meals[index].rating,
-                          kitchenId: mealsConsumer.meals[index].kitchenId,
-                          mealImage: mealsConsumer.meals[index].mealImage,
+                          id: mealsConsumer.availableMeals[index].id,
+                          mealName:
+                              mealsConsumer.availableMeals[index].mealName,
+                          price: mealsConsumer.availableMeals[index].price,
+                          kitchenName:
+                              mealsConsumer.availableMeals[index].kitchenName,
+                          rating: mealsConsumer.availableMeals[index].rating,
+                          kitchenId:
+                              mealsConsumer.availableMeals[index].kitchenId,
+                          mealImage:
+                              mealsConsumer.availableMeals[index].mealImage,
                           kitchenpage: KitchenScreen(),
                           mealpage: MealScreen(),
                         );
                       },
-                      itemCount: mealsConsumer.meals.length,
+                      itemCount: mealsConsumer.availableMeals.length,
                     ),
                   ),
                   // SizedBox(
@@ -214,36 +228,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   // ),
                 ],
               ),
-              //////////////////////update when select category////////////////////////
-              // SizedBox(
-              //   height: getsize(context).height * 0.30,
-              //   child: ListView.builder(
-              //     scrollDirection: Axis.horizontal,
-              //     itemBuilder: (context, index) {
-              //       return CustomCard(
-              //         meal: mealsConsumer.meals[index], // Add itemId here
-              //         mealName: mealsConsumer.meals[index].mealName,
-              //         imageUrl: mealsConsumer.meals[index].imageUrl,
-              //         kitchenName: mealsConsumer.meals[index].kitchenName,
-              //         rating: mealsConsumer.meals[index].rating,
-              //         price: mealsConsumer.meals[index].price,
-              //         // discount: mealsConsumer.meals[index]
-              //         //     .discount, // Example discount, adjust as needed
-              //         mealpage: MealScreen(), // Pass meal screen
-              //         kitchenpage: KitchenScreen(), // Pass kitchen screen
-              //       );
-              //     },
-              //     itemCount: mealsConsumer.meals.length,
-              //   ),
-              // ),
 
-              ///
-              ///
-              ///
               //////////////////////kitchen////////////////////////
-              ///
-              ///
-              ///
+
               const CustomLabel(
                 text: "المطابخ",
                 Sizefont: 20,

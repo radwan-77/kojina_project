@@ -13,7 +13,7 @@ class MealModel {
   double rating;
   String? mealType;
   String? category;
-  dynamic? discount;
+  double? discount;
   DateTime? createdAt;
   DateTime? updatedAt;
 

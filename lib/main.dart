@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
         ],
         supportedLocales: S.delegate.supportedLocales,
         debugShowCheckedModeBanner: false,
-        home: ScreenRouter(),
+        home: MainScreen(),
         // !splash screen ? splash screen : countine your shit
       ),
     );

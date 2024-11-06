@@ -47,7 +47,6 @@ class _FillFavirioteScreenState extends State<FillFavirioteScreen> {
 
                       ////////////meals card/////////////////////
                       Column(
-                        // when use singelchildscrollview the content disapper
                         children: [
                           SizedBox(
                             height: 10,
@@ -66,16 +65,19 @@ class _FillFavirioteScreenState extends State<FillFavirioteScreen> {
                                   favoriteConsumer.favoriteItemIds.length,
                               itemBuilder: (context, index) {
                                 return CustomCard(
-                                  mealImage:
-                                      mealsConsumer.meals[index].mealImage,
-                                  id: mealsConsumer.meals[index].id,
-                                  mealName: mealsConsumer.meals[index].mealName,
-                                  price: mealsConsumer.meals[index].price,
-                                  kitchenName:
-                                      mealsConsumer.meals[index].kitchenName,
-                                  rating: mealsConsumer.meals[index].rating,
-                                  kitchenId:
-                                      mealsConsumer.meals[index].kitchenId,
+                                  mealImage: mealsConsumer
+                                      .primaryMeals[index].mealImage,
+                                  id: mealsConsumer.primaryMeals[index].id,
+                                  mealName: mealsConsumer
+                                      .primaryMeals[index].mealName,
+                                  price:
+                                      mealsConsumer.primaryMeals[index].price,
+                                  kitchenName: mealsConsumer
+                                      .primaryMeals[index].kitchenName,
+                                  rating:
+                                      mealsConsumer.primaryMeals[index].rating,
+                                  kitchenId: mealsConsumer
+                                      .primaryMeals[index].kitchenId,
                                 );
                               },
                             ),

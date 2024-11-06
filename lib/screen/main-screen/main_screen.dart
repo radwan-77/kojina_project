@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:kojina_project/helper/consts.dart';
 import 'package:kojina_project/helper/function_helper.dart';
 import 'package:kojina_project/screen/DrawerScreen/settings_screen.dart';
 import 'package:kojina_project/screen/cart-screen/empty_cart_screen.dart';
+import 'package:kojina_project/screen/cart-screen/my_cart.dart';
 import 'package:kojina_project/screen/faviriote-screen/fav_screen.dart';
 import 'package:kojina_project/screen/main-screen/add_new_location.dart';
 import 'package:kojina_project/screen/main-screen/home_screen.dart';
@@ -29,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
     HomeScreen(),
     const FavoriteScreen(),
     const OrderScreen(),
-    const CartScreen(),
+    const MyCartScreen(),
   ];
 
   int curruntindex = 0;
@@ -61,7 +63,7 @@ class _MainScreenState extends State<MainScreen> {
               text: 'المفضلة',
             ),
             GButton(
-              icon: Icons.not_listed_location,
+              icon: Icons.list_alt,
               text: 'الطلبات',
             ),
             GButton(

@@ -109,18 +109,18 @@ class _KitchenScreenState extends State<KitchenScreen> {
                               itemBuilder: (context, index) {
                                 return CustomCard(
                                   mealImage:
-                                      mealsConsumer.meals[index].mealImage,
-                                  id: mealsConsumer.meals[index].id,
-                                  mealName: mealsConsumer.meals[index].mealName,
-                                  price: mealsConsumer.meals[index].price,
+                                      mealsConsumer.primaryMeals[index].mealImage,
+                                  id: mealsConsumer.primaryMeals[index].id,
+                                  mealName: mealsConsumer.primaryMeals[index].mealName,
+                                  price: mealsConsumer.primaryMeals[index].price,
                                   kitchenName:
-                                      mealsConsumer.meals[index].kitchenName,
-                                  rating: mealsConsumer.meals[index].rating,
+                                      mealsConsumer.primaryMeals[index].kitchenName,
+                                  rating: mealsConsumer.primaryMeals[index].rating,
                                   kitchenId:
-                                      mealsConsumer.meals[index].kitchenId,
+                                      mealsConsumer.primaryMeals[index].kitchenId,
                                 );
                               },
-                              itemCount: mealsConsumer.meals.length,
+                              itemCount: mealsConsumer.primaryMeals.length,
                             ),
                           ),
                           // category 2
@@ -134,18 +134,18 @@ class _KitchenScreenState extends State<KitchenScreen> {
                               itemBuilder: (context, index) {
                                 return CustomCard(
                                   mealImage:
-                                      mealsConsumer.meals[index].mealImage,
-                                  id: mealsConsumer.meals[index].id,
-                                  mealName: mealsConsumer.meals[index].mealName,
-                                  price: mealsConsumer.meals[index].price,
+                                      mealsConsumer.primaryMeals[index].mealImage,
+                                  id: mealsConsumer.primaryMeals[index].id,
+                                  mealName: mealsConsumer.primaryMeals[index].mealName,
+                                  price: mealsConsumer.primaryMeals[index].price,
                                   kitchenName:
-                                      mealsConsumer.meals[index].kitchenName,
-                                  rating: mealsConsumer.meals[index].rating,
+                                      mealsConsumer.primaryMeals[index].kitchenName,
+                                  rating: mealsConsumer.primaryMeals[index].rating,
                                   kitchenId:
-                                      mealsConsumer.meals[index].kitchenId,
+                                      mealsConsumer.primaryMeals[index].kitchenId,
                                 );
                               },
-                              itemCount: mealsConsumer.meals.length,
+                              itemCount: mealsConsumer.primaryMeals.length,
                             ),
                           ),
                           // cataegory 3
@@ -159,18 +159,18 @@ class _KitchenScreenState extends State<KitchenScreen> {
                               itemBuilder: (context, index) {
                                 return CustomCard(
                                   mealImage:
-                                      mealsConsumer.meals[index].mealImage,
-                                  id: mealsConsumer.meals[index].id,
-                                  mealName: mealsConsumer.meals[index].mealName,
-                                  price: mealsConsumer.meals[index].price,
+                                      mealsConsumer.availableMeals[index].mealImage,
+                                  id: mealsConsumer.availableMeals[index].id,
+                                  mealName: mealsConsumer.availableMeals[index].mealName,
+                                  price: mealsConsumer.availableMeals[index].price,
                                   kitchenName:
-                                      mealsConsumer.meals[index].kitchenName,
-                                  rating: mealsConsumer.meals[index].rating,
+                                      mealsConsumer.availableMeals[index].kitchenName,
+                                  rating: mealsConsumer.availableMeals[index].rating,
                                   kitchenId:
-                                      mealsConsumer.meals[index].kitchenId,
+                                      mealsConsumer.availableMeals[index].kitchenId,
                                 );
                               },
-                              itemCount: mealsConsumer.meals.length,
+                              itemCount: mealsConsumer.availableMeals.length,
                             ),
                           ),
                         ],
